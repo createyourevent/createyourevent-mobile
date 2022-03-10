@@ -1,0 +1,28 @@
+{
+  "name": "FeeTransactionId",
+  "fields": [
+    {
+      "fieldName": "transactionId",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "feeTransaction",
+      "otherEntityRelationshipName": "transactionId",
+      "relationshipName": "feeTransaction",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "fee_transaction_id",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220215082403"
+}

@@ -1,0 +1,118 @@
+{
+  "BACK_BUTTON_TEXT": "Zurück",
+
+  "NAME": "Name",
+  "FIRST_NAME": "Vorname",
+  "LAST_NAME": "Nachname",
+  "PASSWORD": "Passwort",
+  "REMEMBER_ME": "Remember me",
+  "EMAIL": "Email",
+  "USERNAME": "Username",
+  "LOGIN": "Anmelden",
+  "SIGNUP": "Registrieren",
+  "NO_ACCOUNT_MESSAGE": "Noch kein Account?",
+
+  "CANCEL_BUTTON": "Schließen",
+
+  "TAB1_TITLE": "Home",
+  "TAB2_TITLE": "Suche",
+  "TAB3_TITLE": "Zugang",
+
+  "TAB4_TITLE": "Ticketscanner",
+  "TAB5_TITLE": "Tickets",
+  "TAB5_RESERVATIONEN": "Reservationen",
+  "TAB6_COUPONS": "Gutscheine",
+  "TAB7_COUPONSCANNER": "Gutscheinscanner",
+  "EVENTS_TITLE": "Events",
+
+  "ONLY_CHECK": "Nur prüfen",
+  "SCAN_TICKET": "Scan Ticket",
+  "TICKET_INFO_TITLE": "Ticket-Info:",
+  "TICKET_INFO": "Alle Infos für das gescannte Ticket.",
+
+  "TICKETS_FROM": "Tickets von",
+  "QR_CODE": "QR-Code",
+  "BARCODE_FROM": "Barcode von",
+  "FOR_EVENT": "Für Event",
+  "SELECT_EVENT": "Wähle Event",
+
+  "TICKET_NOT_FROM_EVENT": "Ticket nicht von diesem Event",
+  "VALID_TICKET": "Valides Ticket",
+  "INVALID_TICKET": "Invalides Ticket",
+  "USED": "Benutzt:",
+
+  "MAP_TITLE": "Karte",
+
+  "TUTORIAL_SLIDE1_TITLE": "Hallo Ionic Super Starter App",
+  "TUTORIAL_SLIDE1_DESCRIPTION": "Die <b>Ionic Super Starter App</b> ist eine umfangreiche Starter App mit vielen vorgefertigten Seiten und Best Practices.",
+
+  "TUTORIAL_SLIDE2_TITLE": "Wie soll man die Super Starter App verwenden",
+  "TUTORIAL_SLIDE2_DESCRIPTION": "Nütze und bearbeite die Funktionen und Seiten die du benötigst und lösche den Rest. Wähle aus einer vielzahl an Layouts, wie Anmelden, Registrieren, Tabs und einer Tutorial Seite.",
+
+  "TUTORIAL_SLIDE3_TITLE": "Los gehts",
+  "TUTORIAL_SLIDE3_DESCRIPTION": "Du brauchst Hilfe? Sieh dir das README File an um mehr zu erfahren.",
+
+  "TUTORIAL_CONTINUE_BUTTON": "Fortfahren",
+
+  "WELCOME_INTRO": "Willkommen in der kleinen Version von www.createyourevent.org. Wir bieten hier verschiedene Tools an, welche Sie für Ihre Accounts nutzen können. Sprich für Organisatoren, Lieferanten, Dienstleister und natürlich die Eventteilnehmer.",
+
+  "SETTINGS_TITLE": "Einstellungen",
+  "SETTINGS_OPTION1": "Option 1",
+  "SETTINGS_OPTION2": "Option 2",
+  "SETTINGS_OPTION3": "Option 3",
+  "SETTINGS_OPTION4": "Option 4",
+
+  "SETTINGS_PAGE_PROFILE": "Profil ändern",
+
+  "WELCOME_TITLE": "Willkommen",
+  "LOGOUT_TITLE": "Logout",
+
+  "LOGIN_TITLE": "Anmelden",
+  "LOGIN_ERROR": "Fehler beim Anmelden, bitte überprüfe deine Informationen und versuche es erneut.",
+  "LOGIN_BUTTON": "Anmelden",
+  "SIGNUP_TITLE": "Registrieren",
+  "SIGNUP_ERROR": "Fehler beim Registrieren, bitte überprüfe deine Informationen und versuche es erneut.",
+  "SIGNUP_SUCCESS": "Registration saved! Please check your email for confirmation.",
+  "EXISTING_USER_ERROR": "Email is already in use! Please choose another one.",
+  "INVALID_PASSWORD_ERROR": "Invalid password, please try again.",
+  "SIGNUP_BUTTON": "Registrieren",
+
+  "LIST_MASTER_TITLE": "Artikel",
+
+  "ITEM_CREATE_TITLE": "Neuer Artikel",
+  "ITEM_CREATE_CHOOSE_IMAGE": "Artikel hinzufügen",
+
+  "CARDS_TITLE": "Social",
+
+  "SEARCH_TITLE": "Suche",
+  "SEARCH_PLACEHOLDER": "Suche in der Artikel-Liste, z.B. \"Donald Duck\"",
+  "EMPTY_ENTITIES_MESSAGE": "You haven't generated entities yet. Run `yo jhipster-ionic:entity <name>`",
+  "OFFLINE_TICKETSCANNER": "Offline Ticketscanner",
+  "SYNC_OFFLINE": "Offline Synchronisation",
+  "UPLOAD_SYNC": "Auf www.createyourevent.org uploaden",
+
+  "TOTAL_ENTRIES": "Total eingelassene Personen",
+  "TOTAL_RESERVATIONEN": "Total Reservationen",
+  "RESERVATIONS": "Reservationen",
+  "STAT_RESERVATIONS": "Statistik Reservationen",
+
+  "START_DATE": "Startdatum",
+  "START_TIME": "Startzeit",
+  "END_DATE": "Enddatum",
+  "END_TIME": "Endzeit",
+
+  "DESCRIPTION": "Beschreibung",
+  "DESCRIPTION_INFO": "Infos und Beschreibung",
+  "DATE": "Datum",
+  "DATE_INFO": "Datum und Zeit",
+  "LOCATION": "Lokalität",
+  "LOCATION_INFO": "Infos über die Lokalität",
+
+  "TOTAL_TICKETS": "Total Tickets",
+  "DOWNLOAD_TICKET": "Ticket herunterladen",
+  "UPDATE_EVENT": "Event aktualisieren",
+  "SYNC_UPLOADED": "Upload synchronisiert",
+
+  "SCAN_COUPON": "Gutschein einlösen",
+  "VALUE": "Einzulösender Wert"
+}

@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Create Your Event Service </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">ID</ion-label>
+      <div item-content>
+        <span>{{createYourEventService.id}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Name</ion-label>
+      <div item-content>
+        <span>{{createYourEventService.name}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Logo</ion-label>
+      <div item-content>
+        <div *ngIf="createYourEventService.logo">
+          <a (click)="openFile(createYourEventService.logoContentType, createYourEventService.logo)">
+            <img
+              [src]="'data:' + createYourEventService.logoContentType + ';base64,' + createYourEventService.logo"
+              style="max-width: 100%"
+              alt="createYourEventService image"
+            />
+          </a>
+          {{createYourEventService.logoContentType}}, {{byteSize(createYourEventService.logo)}}
+        </div>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Active</ion-label>
+      <div item-content>
+        <span>{{createYourEventService.active}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Active Owner</ion-label>
+      <div item-content>
+        <span>{{createYourEventService.activeOwner}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Description</ion-label>
+      <div item-content>
+        <span>{{createYourEventService.description}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Address</ion-label>
+      <div item-content>
+        <span>{{createYourEventService.address}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Motto</ion-label>
+      <div item-content>
+        <span>{{createYourEventService.motto}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Phone</ion-label>
+      <div item-content>
+        <span>{{createYourEventService.phone}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Web Address</ion-label>
+      <div item-content>
+        <span>{{createYourEventService.webAddress}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Category</ion-label>
+      <div item-content>
+        <span>{{createYourEventService.category}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>User</ion-label>
+      <div item-content>{{createYourEventService.user?.id}}</div>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="open(createYourEventService)">{{ 'EDIT_BUTTON' | translate }}</ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteModal(createYourEventService)">{{ 'DELETE_BUTTON' | translate }}</ion-button>
+</ion-content>

@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Events </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- todo: add elasticsearch support -->
+<ion-content class="ion-padding">
+  <ion-refresher [disabled]="plt.is('desktop')" slot="fixed" (ionRefresh)="loadAll($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let event of events; trackBy: trackId" #slidingItem>
+      <ion-item (click)="view(event)">
+        <ion-label text-wrap>
+          <p>{{event.id}}</p>
+          <ion-text color="primary"><h2>{{event.name}}</h2></ion-text>
+          <p>{{event.description}}</p>
+          <p>{{event.dateStart | date:'medium'}}</p>
+          <p>{{event.dateEnd | date:'medium'}}</p>
+          <!-- todo: special handling for translating enum - {{'EventCategory.' + event.category}}" -->
+          <p>{{event.category}}</p>
+          <p>{{event.price}}</p>
+          <ion-avatar *ngIf="event.flyer">
+            <img [src]="'data:' + event.flyerContentType + ';base64,' + event.flyer" />
+          </ion-avatar>
+          <p>{{event.youtube}}</p>
+          <p>{{event.privateOrPublic}}</p>
+          <p>{{event.active}}</p>
+          <p>{{event.minPlacenumber}}</p>
+          <p>{{event.placenumber}}</p>
+          <p>{{event.investment}}</p>
+          <!-- todo: special handling for translating enum - {{'EventStatus.' + event.status}}" -->
+          <p>{{event.status}}</p>
+          <p>{{event.definitelyConfirmed}}</p>
+          <p>{{event.motto}}</p>
+          <p>{{event.billed}}</p>
+          <p>{{event.stars}}</p>
+          <p>{{event.billedOrganisator}}</p>
+          <p>{{event.billedeCreateYourEvent}}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="primary" (click)="edit(slidingItem, event)"> {{ 'EDIT_BUTTON' | translate }} </ion-item-option>
+        <ion-item-option color="danger" (click)="delete(event)"> {{ 'DELETE_BUTTON' | translate }} </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-item *ngIf="!events?.length">
+    <ion-label> No Events found. </ion-label>
+  </ion-item>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="new()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

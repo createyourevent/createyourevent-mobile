@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Reservation </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button [disabled]="!isReadyToSave" (click)="save()" color="primary">
+        <span *ngIf="platform.is('ios')">{{'DONE_BUTTON' | translate}}</span>
+        <ion-icon name="checkmark" *ngIf="!platform.is('ios')"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form *ngIf="form" name="form" [formGroup]="form" (ngSubmit)="save()">
+    <ion-list>
+      <ion-item [hidden]="!form.id">
+        <ion-label>ID</ion-label>
+        <ion-input type="hidden" id="id" formControlName="id" readonly></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY HH:mm" formControlName="date" id="field_date"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Billed</ion-label>
+        <ion-checkbox formControlName="billed"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label>Access Event</ion-label>
+        <ion-checkbox formControlName="accessEvent"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label>Access Date</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY HH:mm" formControlName="accessDate" id="field_accessDate"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Td Tx Id</ion-label>
+        <ion-input type="text" name="tdTxId" formControlName="tdTxId"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Transaction Id</ion-label>
+        <ion-select id="field_transactionId" formControlName="transactionId" [compareWith]="compareReservationTransactionId">
+          <ion-select-option [value]="null"></ion-select-option>
+          <ion-select-option
+            [value]="reservationTransactionIdOption.id === reservation.transactionId?.id ? reservation.transactionId : reservationTransactionIdOption"
+            *ngFor="let reservationTransactionIdOption of transactionids; trackBy: trackReservationTransactionIdById"
+            >{{reservationTransactionIdOption.id}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Ticket</ion-label>
+        <ion-select id="field_ticket" formControlName="ticket" [compareWith]="compareTicket">
+          <ion-select-option [value]="null"></ion-select-option>
+          <ion-select-option
+            [value]="ticketOption.id === reservation.ticket?.id ? reservation.ticket : ticketOption"
+            *ngFor="let ticketOption of tickets; trackBy: trackTicketById"
+            >{{ticketOption.id}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>User</ion-label>
+        <ion-select id="field_user" formControlName="user" [compareWith]="compareUser">
+          <ion-select-option [value]="null"></ion-select-option>
+          <ion-select-option [value]="userOption" *ngFor="let userOption of users; trackBy: trackUserById"
+            >{{userOption.id}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Event</ion-label>
+        <ion-select id="field_event" formControlName="event" [compareWith]="compareEvent">
+          <ion-select-option [value]="null"></ion-select-option>
+          <ion-select-option [value]="eventOption" *ngFor="let eventOption of events; trackBy: trackEventById"
+            >{{eventOption.id}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

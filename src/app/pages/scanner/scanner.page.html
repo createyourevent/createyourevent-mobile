@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title> Ticket scanner </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-label>{{ 'FOR_EVENT' | translate}}</ion-label>
+    <ion-select [(ngModel)]="event" (ionChange)="onChange($event)" placeholder="{{ 'SELECT_EVENT' | translate }}">
+      <ion-select-option *ngFor="let event of events" value="{{ event.id }}">{{ event.name }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <div id="container" *ngIf="event !== null">
+    <ion-button (click)="barcodeScanner()">{{ 'SCAN_TICKET' | translate }}</ion-button>
+    <ion-button (click)="checkTicketValidity()" color="secondary">{{ 'ONLY_CHECK' | translate }}</ion-button>
+    <ng-container *ngIf="showInfo">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>{{ 'TICKET_INFO' | translate }}</ion-card-subtitle>
+          <ion-card-title>{{ 'TICKET_INFO_TITLE' | translate }}</ion-card-title>
+        </ion-card-header>
+        <hr />
+        <ion-card-content>
+          <p><span class="bold">Ticket:</span> {{ ticket.ticketsUsed }} / {{ ticket.amount }}</p>
+          <p><span class="bold">UserId:</span> {{ userId }}</p>
+          <p><span class="bold">EventId:</span> {{ eventId }}</p>
+          <p><span class="bold">ReservationId:</span> {{ reservationId }}</p>
+          <p><span class="bold">Email:</span> {{ email }}</p>
+          <p><span class="bold">Eventname:</span> {{ eventName }}</p>
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+  </div>
+  <hr />
+  <ion-button (click)="syncEvents()" [disabled]="!checkEventId" color="secondary">{{ 'SYNC_OFFLINE' | translate }}</ion-button>
+  <ion-item>
+    <ion-label>{{ 'EVENTNAME' | translate}}</ion-label>
+    <ion-input value="{{ syncEventName }}" readonly></ion-input>
+  </ion-item>
+  <hr />
+  <ion-button (click)="uploadSync()" [disabled]="!syncEventId" color="secondary">{{ 'UPLOAD_SYNC' | translate }}</ion-button>
+</ion-content>

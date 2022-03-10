@@ -1,0 +1,39 @@
+{
+  "name": "UserExtension",
+  "fields": [
+    {
+      "fieldName": "address",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "loggedIn",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "points",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "userExtension",
+      "relationshipName": "user"
+    }
+  ],
+  "entityTableName": "user_extension",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220215082423"
+}

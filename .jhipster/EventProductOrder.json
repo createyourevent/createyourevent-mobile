@@ -1,0 +1,105 @@
+{
+  "name": "EventProductOrder",
+  "fields": [
+    {
+      "fieldName": "amount",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "total",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "rentalPeriod",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "dateFrom",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "dateUntil",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "RentStatus",
+      "fieldValues": "BOOKED,RENTED,BACK"
+    },
+    {
+      "fieldName": "billed",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "seen",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "approved",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "sellingPrice",
+      "fieldType": "Float"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "eventProductOrder",
+      "relationshipName": "user"
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "feeTransaction",
+      "otherEntityRelationshipName": "eventProductOrder",
+      "relationshipName": "feeTransaction",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "event",
+      "otherEntityRelationshipName": "eventProductOrders",
+      "relationshipName": "event"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "eventProductOrders",
+      "relationshipName": "product"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "shop",
+      "otherEntityRelationshipName": "eventProductOrders",
+      "relationshipName": "shop"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cart",
+      "otherEntityRelationshipName": "products",
+      "relationshipName": "cart"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "deliveryType",
+      "otherEntityRelationshipName": "eventProductOrders",
+      "relationshipName": "deliveryType"
+    }
+  ],
+  "entityTableName": "event_product_order",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220215082400"
+}

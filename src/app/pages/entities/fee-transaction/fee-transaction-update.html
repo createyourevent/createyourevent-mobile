@@ -1,0 +1,98 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Fee Transaction </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button [disabled]="!isReadyToSave" (click)="save()" color="primary">
+        <span *ngIf="platform.is('ios')">{{'DONE_BUTTON' | translate}}</span>
+        <ion-icon name="checkmark" *ngIf="!platform.is('ios')"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form *ngIf="form" name="form" [formGroup]="form" (ngSubmit)="save()">
+    <ion-list>
+      <ion-item [hidden]="!form.id">
+        <ion-label>ID</ion-label>
+        <ion-input type="hidden" id="id" formControlName="id" readonly></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY HH:mm" formControlName="date" id="field_date"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Transaction Id</ion-label>
+        <ion-select id="field_transactionId" formControlName="transactionId" [compareWith]="compareFeeTransactionId">
+          <ion-select-option [value]="null"></ion-select-option>
+          <ion-select-option
+            [value]="feeTransactionIdOption.id === feeTransaction.transactionId?.id ? feeTransaction.transactionId : feeTransactionIdOption"
+            *ngFor="let feeTransactionIdOption of transactionids; trackBy: trackFeeTransactionIdById"
+            >{{feeTransactionIdOption.id}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Event Product Order</ion-label>
+        <ion-select id="field_eventProductOrder" formControlName="eventProductOrder" [compareWith]="compareEventProductOrder">
+          <ion-select-option [value]="null"></ion-select-option>
+          <ion-select-option
+            [value]="eventProductOrderOption.id === feeTransaction.eventProductOrder?.id ? feeTransaction.eventProductOrder : eventProductOrderOption"
+            *ngFor="let eventProductOrderOption of eventproductorders; trackBy: trackEventProductOrderById"
+            >{{eventProductOrderOption.id}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Event Service Map Order</ion-label>
+        <ion-select id="field_eventServiceMapOrder" formControlName="eventServiceMapOrder" [compareWith]="compareEventServiceMapOrder">
+          <ion-select-option [value]="null"></ion-select-option>
+          <ion-select-option
+            [value]="eventServiceMapOrderOption.id === feeTransaction.eventServiceMapOrder?.id ? feeTransaction.eventServiceMapOrder : eventServiceMapOrderOption"
+            *ngFor="let eventServiceMapOrderOption of eventservicemaporders; trackBy: trackEventServiceMapOrderById"
+            >{{eventServiceMapOrderOption.id}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Event</ion-label>
+        <ion-select id="field_event" formControlName="event" [compareWith]="compareEvent">
+          <ion-select-option [value]="null"></ion-select-option>
+          <ion-select-option
+            [value]="eventOption.id === feeTransaction.event?.id ? feeTransaction.event : eventOption"
+            *ngFor="let eventOption of events; trackBy: trackEventById"
+            >{{eventOption.id}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Organization Reservation</ion-label>
+        <ion-select
+          id="field_organizationReservation"
+          formControlName="organizationReservation"
+          [compareWith]="compareOrganizationReservation"
+        >
+          <ion-select-option [value]="null"></ion-select-option>
+          <ion-select-option
+            [value]="organizationReservationOption.id === feeTransaction.organizationReservation?.id ? feeTransaction.organizationReservation : organizationReservationOption"
+            *ngFor="let organizationReservationOption of organizationreservations; trackBy: trackOrganizationReservationById"
+            >{{organizationReservationOption.id}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>User</ion-label>
+        <ion-select id="field_user" formControlName="user" [compareWith]="compareUser">
+          <ion-select-option [value]="null"></ion-select-option>
+          <ion-select-option [value]="userOption" *ngFor="let userOption of users; trackBy: trackUserById"
+            >{{userOption.id}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

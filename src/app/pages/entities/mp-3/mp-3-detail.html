@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Mp 3 </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">ID</ion-label>
+      <div item-content>
+        <span>{{mp3.id}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Title</ion-label>
+      <div item-content>
+        <span>{{mp3.title}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Artists</ion-label>
+      <div item-content>
+        <span>{{mp3.artists}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Duration</ion-label>
+      <div item-content>
+        <span>{{mp3.duration}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Url</ion-label>
+      <div item-content>
+        <span>{{mp3.url}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>User</ion-label>
+      <div item-content>{{mp3.user?.id}}</div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Product</ion-label>
+      <div item-content *ngIf="mp3.product">
+        <a>{{mp3.product?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Shop</ion-label>
+      <div item-content *ngIf="mp3.shop">
+        <a>{{mp3.shop?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Event</ion-label>
+      <div item-content *ngIf="mp3.event">
+        <a>{{mp3.event?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Service</ion-label>
+      <div item-content *ngIf="mp3.service">
+        <a>{{mp3.service?.id}}</a>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="open(mp3)">{{ 'EDIT_BUTTON' | translate }}</ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteModal(mp3)">{{ 'DELETE_BUTTON' | translate }}</ion-button>
+</ion-content>

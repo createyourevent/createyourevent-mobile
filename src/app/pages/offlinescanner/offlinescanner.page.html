@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title> Ticket scanner </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-label>{{ 'EVENTNAME' | translate}}</ion-label>
+    <ion-input value="{{ dbEvent }}" readonly></ion-input>
+  </ion-item>
+  <ion-button (click)="barcodeScanner()">{{ 'SCAN_TICKET' | translate }}</ion-button>
+  <ion-button (click)="checkTicketValidity()" color="secondary">{{ 'ONLY_CHECK' | translate }}</ion-button>
+
+  <ng-container *ngIf="showInfo">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>{{ 'TICKET_INFO' | translate }}</ion-card-subtitle>
+        <ion-card-title>{{ 'TICKET_INFO_TITLE' | translate }}</ion-card-title>
+      </ion-card-header>
+      <hr />
+      <ion-card-content>
+        <p><span class="bold">Ticket:</span> {{ t.ticketsUsed }} / {{ t.amount }}</p>
+        <p><span class="bold">UserId:</span> {{ userId }}</p>
+        <p><span class="bold">EventId:</span> {{ eventId }}</p>
+        <p><span class="bold">ReservationId:</span> {{ reservationId }}</p>
+        <p><span class="bold">Email:</span> {{ email }}</p>
+        <p><span class="bold">Eventname:</span> {{ eventName }}</p>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+</ion-content>
+
+<ion-footer (click)="goBackToHomePage()">
+  <ion-toolbar color="success" class="ion-padding-horizontal">
+    <div class="ion-text-center">
+      <h4 class="ion-no-margin">{{ 'LOGIN' | translate }}</h4>
+    </div>
+  </ion-toolbar>
+</ion-footer>

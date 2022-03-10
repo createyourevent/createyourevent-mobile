@@ -1,0 +1,49 @@
+{
+  "name": "ShopComment",
+  "fields": [
+    {
+      "fieldName": "comment",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "shopComment",
+      "otherEntityRelationshipName": "shopComment",
+      "relationshipName": "shopComments"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "shop",
+      "otherEntityRelationshipName": "comments",
+      "relationshipName": "shop"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "shopComment",
+      "relationshipName": "user"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "shopComment",
+      "otherEntityRelationshipName": "shopComments",
+      "relationshipName": "shopComment"
+    }
+  ],
+  "entityTableName": "shop_comment",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220215082340"
+}

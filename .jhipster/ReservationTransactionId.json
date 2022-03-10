@@ -1,0 +1,32 @@
+{
+  "name": "ReservationTransactionId",
+  "fields": [
+    {
+      "fieldName": "transactionDepositId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "transactionId",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "reservation",
+      "otherEntityRelationshipName": "transactionId",
+      "relationshipName": "reservation",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "reservation_transaction_id",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220215082402"
+}

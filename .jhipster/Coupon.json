@@ -1,0 +1,50 @@
+{
+  "name": "Coupon",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "value",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "couponNr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "used",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "coupon",
+      "relationshipName": "user"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "event",
+      "otherEntityRelationshipName": "coupon",
+      "relationshipName": "event"
+    }
+  ],
+  "entityTableName": "coupon",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220215082426"
+}

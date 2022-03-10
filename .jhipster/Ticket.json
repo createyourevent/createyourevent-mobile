@@ -1,0 +1,60 @@
+{
+  "name": "Ticket",
+  "fields": [
+    {
+      "fieldName": "amount",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "total",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "refNo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "accessDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "ticketsUsed",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "event",
+      "otherEntityRelationshipName": "ticket",
+      "relationshipName": "event"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "ticket",
+      "relationshipName": "user"
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "reservation",
+      "otherEntityRelationshipName": "ticket",
+      "relationshipName": "reservation",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "ticket",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220215082425"
+}

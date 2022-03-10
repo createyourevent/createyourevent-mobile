@@ -1,0 +1,193 @@
+{
+  "name": "Event",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateStart",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateEnd",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "category",
+      "fieldType": "EventCategory",
+      "fieldValues": "INDOOR,OUTDOOR,BIRTHDAY,NATIONAL_HOLYDAY,WEDDING,GRADUATION,HALLOWEEN,NEWYEAR",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "flyer",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "youtube",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "privateOrPublic",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "active",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "minPlacenumber",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "placenumber",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "investment",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "EventStatus",
+      "fieldValues": "PROCESSING,DEFINITELY"
+    },
+    {
+      "fieldName": "definitelyConfirmed",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "motto",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "billed",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "stars",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "billedOrganisator",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "billedeCreateYourEvent",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "location",
+      "otherEntityRelationshipName": "event",
+      "relationshipName": "location",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "eventDetails",
+      "otherEntityRelationshipName": "event",
+      "relationshipName": "eventDetail",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "eventProductOrder",
+      "otherEntityRelationshipName": "event",
+      "relationshipName": "eventProductOrders"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "reservation",
+      "otherEntityRelationshipName": "event",
+      "relationshipName": "reservations"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "eventProductRatingComment",
+      "otherEntityRelationshipName": "event",
+      "relationshipName": "comments"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "worksheet",
+      "otherEntityRelationshipName": "event",
+      "relationshipName": "worksheets"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "eventServiceMapOrder",
+      "otherEntityRelationshipName": "event",
+      "relationshipName": "eventServiceMapOrders"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "image",
+      "otherEntityRelationshipName": "event",
+      "relationshipName": "images"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "mp3",
+      "otherEntityRelationshipName": "event",
+      "relationshipName": "mp3s"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "event",
+      "relationshipName": "user"
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "feeTransaction",
+      "otherEntityRelationshipName": "event",
+      "relationshipName": "feeTransaction",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "tags",
+      "otherEntityRelationshipName": "event",
+      "relationshipName": "tags"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "organizationReservation",
+      "otherEntityRelationshipName": "event",
+      "relationshipName": "organizationReservations"
+    }
+  ],
+  "entityTableName": "event",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220215082408"
+}

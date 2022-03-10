@@ -1,0 +1,106 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Event Service Map Order </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">ID</ion-label>
+      <div item-content>
+        <span>{{eventServiceMapOrder.id}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Date</ion-label>
+      <div item-content>
+        <span>{{eventServiceMapOrder.date | date:'medium'}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Date From</ion-label>
+      <div item-content>
+        <span>{{eventServiceMapOrder.dateFrom | date:'medium'}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Date Until</ion-label>
+      <div item-content>
+        <span>{{eventServiceMapOrder.dateUntil | date:'medium'}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Cost Hour</ion-label>
+      <div item-content>
+        <span>{{eventServiceMapOrder.costHour}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Ride Costs</ion-label>
+      <div item-content>
+        <span>{{eventServiceMapOrder.rideCosts}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Total</ion-label>
+      <div item-content>
+        <span>{{eventServiceMapOrder.total}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Total Hours</ion-label>
+      <div item-content>
+        <span>{{eventServiceMapOrder.totalHours}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Kilometre</ion-label>
+      <div item-content>
+        <span>{{eventServiceMapOrder.kilometre}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Billed</ion-label>
+      <div item-content>
+        <span>{{eventServiceMapOrder.billed}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Seen</ion-label>
+      <div item-content>
+        <span>{{eventServiceMapOrder.seen}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Approved</ion-label>
+      <div item-content>
+        <span>{{eventServiceMapOrder.approved}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Event</ion-label>
+      <div item-content *ngIf="eventServiceMapOrder.event">
+        <a>{{eventServiceMapOrder.event?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Service Map</ion-label>
+      <div item-content *ngIf="eventServiceMapOrder.serviceMap">
+        <a>{{eventServiceMapOrder.serviceMap?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Cart</ion-label>
+      <div item-content *ngIf="eventServiceMapOrder.cart">
+        <a>{{eventServiceMapOrder.cart?.id}}</a>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="open(eventServiceMapOrder)">{{ 'EDIT_BUTTON' | translate }}</ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteModal(eventServiceMapOrder)">{{ 'DELETE_BUTTON' | translate }}</ion-button>
+</ion-content>

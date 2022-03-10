@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> {{ 'BARCODE_FROM' | translate }} {{ reservation.event.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div id="ticket" class="ticket">
+    <h3>{{ reservation.event.name }}</h3>
+    <ngx-qrcode
+      [elementType]="elementType"
+      [errorCorrectionLevel]="correctionLevel"
+      [value]="value"
+      alt="Print@home from Create Your Event"
+      cssClass="bshadow"
+    ></ngx-qrcode>
+    <hr />
+    <img src="../../../assets/img/logo_250.png" />
+  </div>
+</ion-content>
+
+<ion-footer (click)="downloadInvoice()">
+  <ion-toolbar color="success" class="ion-padding-horizontal">
+    <div class="ion-text-center">
+      <h4 class="ion-no-margin">{{ 'DOWNLOAD_TICKET' | translate }}</h4>
+    </div>
+  </ion-toolbar>
+</ion-footer>

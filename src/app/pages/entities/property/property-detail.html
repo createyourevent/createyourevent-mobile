@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Property </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">ID</ion-label>
+      <div item-content>
+        <span>{{property.id}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Key</ion-label>
+      <div item-content>
+        <span>{{property.key}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Value</ion-label>
+      <div item-content>
+        <span>{{property.value}}</span>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="open(property)">{{ 'EDIT_BUTTON' | translate }}</ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteModal(property)">{{ 'DELETE_BUTTON' | translate }}</ion-button>
+</ion-content>

@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Shop Star Rating </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">ID</ion-label>
+      <div item-content>
+        <span>{{shopStarRating.id}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Stars</ion-label>
+      <div item-content>
+        <span>{{shopStarRating.stars}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Date</ion-label>
+      <div item-content>
+        <span>{{shopStarRating.date | date:'medium'}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Comment</ion-label>
+      <div item-content>
+        <span>{{shopStarRating.comment}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Shop</ion-label>
+      <div item-content *ngIf="shopStarRating.shop">
+        <a>{{shopStarRating.shop?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>User</ion-label>
+      <div item-content>{{shopStarRating.user?.id}}</div>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="open(shopStarRating)">{{ 'EDIT_BUTTON' | translate }}</ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteModal(shopStarRating)">{{ 'DELETE_BUTTON' | translate }}</ion-button>
+</ion-content>

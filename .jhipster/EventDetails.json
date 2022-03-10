@@ -1,0 +1,28 @@
+{
+  "name": "EventDetails",
+  "fields": [
+    {
+      "fieldName": "totalEntranceFee",
+      "fieldType": "Float"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "event",
+      "otherEntityRelationshipName": "eventDetail",
+      "relationshipName": "event",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "event_details",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220215082341"
+}

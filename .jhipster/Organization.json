@@ -1,0 +1,135 @@
+{
+  "name": "Organization",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "organizationType",
+      "fieldType": "OrganizationType",
+      "fieldValues": "RESTAURANT,HOTEL,CLUB,BUILDING",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "logo",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "active",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "activeOwner",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "address",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "motto",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "phone",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "webAddress",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "placeNumber",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "rentType",
+      "fieldType": "RentType",
+      "fieldValues": "HOURLY,HALFDAY,DAY"
+    },
+    {
+      "fieldName": "rentable",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "image",
+      "otherEntityRelationshipName": "organization",
+      "relationshipName": "images"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "organizationReservation",
+      "otherEntityRelationshipName": "organization",
+      "relationshipName": "organizationReservations"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "organization",
+      "relationshipName": "user"
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "restaurant",
+      "otherEntityRelationshipName": "organization",
+      "relationshipName": "restaurant",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "hotel",
+      "otherEntityRelationshipName": "organization",
+      "relationshipName": "hotel",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "club",
+      "otherEntityRelationshipName": "organization",
+      "relationshipName": "club",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "building",
+      "otherEntityRelationshipName": "organization",
+      "relationshipName": "building",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "tags",
+      "otherEntityRelationshipName": "organization",
+      "relationshipName": "tags"
+    }
+  ],
+  "entityTableName": "organization",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220215082326"
+}

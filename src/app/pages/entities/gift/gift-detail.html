@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Gift </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">ID</ion-label>
+      <div item-content>
+        <span>{{gift.id}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Title</ion-label>
+      <div item-content>
+        <span>{{gift.title}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Description</ion-label>
+      <div item-content>
+        <span>{{gift.description}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Photo</ion-label>
+      <div item-content>
+        <div *ngIf="gift.photo">
+          <a (click)="openFile(gift.photoContentType, gift.photo)">
+            <img [src]="'data:' + gift.photoContentType + ';base64,' + gift.photo" style="max-width: 100%" alt="gift image" />
+          </a>
+          {{gift.photoContentType}}, {{byteSize(gift.photo)}}
+        </div>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Points</ion-label>
+      <div item-content>
+        <span>{{gift.points}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Active</ion-label>
+      <div item-content>
+        <span>{{gift.active}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Stock</ion-label>
+      <div item-content>
+        <span>{{gift.stock}}</span>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="open(gift)">{{ 'EDIT_BUTTON' | translate }}</ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteModal(gift)">{{ 'DELETE_BUTTON' | translate }}</ion-button>
+</ion-content>

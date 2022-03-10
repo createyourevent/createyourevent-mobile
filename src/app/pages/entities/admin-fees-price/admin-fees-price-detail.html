@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Admin Fees Price </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">ID</ion-label>
+      <div item-content>
+        <span>{{adminFeesPrice.id}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Fees Organisator</ion-label>
+      <div item-content>
+        <span>{{adminFeesPrice.feesOrganisator}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Fees Supplier</ion-label>
+      <div item-content>
+        <span>{{adminFeesPrice.feesSupplier}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Fees Service</ion-label>
+      <div item-content>
+        <span>{{adminFeesPrice.feesService}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Fees Organizations</ion-label>
+      <div item-content>
+        <span>{{adminFeesPrice.feesOrganizations}}</span>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="open(adminFeesPrice)">{{ 'EDIT_BUTTON' | translate }}</ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteModal(adminFeesPrice)">{{ 'DELETE_BUTTON' | translate }}</ion-button>
+</ion-content>

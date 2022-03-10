@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title> {{ 'TAB6_COUPONS' | translate }} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides pager="true" [options]="slideOpts">
+  <ng-container *ngFor="let coupon of coupons">
+    <ion-slide>
+      <div gradient class="slide">
+        <h2>{{ coupon.title }}</h2>
+        <p>{{ coupon.description }}</p>
+        <p>{{ coupon.value | currency:'CHF' }}</p>
+        <div>
+          <ngx-qrcode
+          [elementType]="elementType"
+          [errorCorrectionLevel]="correctionLevel"
+          [value]="getValue(coupon)"
+          alt="Print@home from Create Your Event"
+          cssClass="bshadow"
+        ></ngx-qrcode>
+        </div>
+      </div>
+    </ion-slide>
+  </ng-container>
+  </ion-slides>
+</ion-content>

@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Event Service Map Order </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button [disabled]="!isReadyToSave" (click)="save()" color="primary">
+        <span *ngIf="platform.is('ios')">{{'DONE_BUTTON' | translate}}</span>
+        <ion-icon name="checkmark" *ngIf="!platform.is('ios')"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form *ngIf="form" name="form" [formGroup]="form" (ngSubmit)="save()">
+    <ion-list>
+      <ion-item [hidden]="!form.id">
+        <ion-label>ID</ion-label>
+        <ion-input type="hidden" id="id" formControlName="id" readonly></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY HH:mm" formControlName="date" id="field_date"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Date From</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY HH:mm" formControlName="dateFrom" id="field_dateFrom"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Date Until</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY HH:mm" formControlName="dateUntil" id="field_dateUntil"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Cost Hour</ion-label>
+        <ion-input type="number" name="costHour" formControlName="costHour"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Ride Costs</ion-label>
+        <ion-input type="number" name="rideCosts" formControlName="rideCosts"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Total</ion-label>
+        <ion-input type="number" name="total" formControlName="total"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Total Hours</ion-label>
+        <ion-input type="text" name="totalHours" formControlName="totalHours"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Kilometre</ion-label>
+        <ion-input type="number" name="kilometre" formControlName="kilometre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Billed</ion-label>
+        <ion-checkbox formControlName="billed"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label>Seen</ion-label>
+        <ion-checkbox formControlName="seen"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label>Approved</ion-label>
+        <ion-checkbox formControlName="approved"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label>Event</ion-label>
+        <ion-select id="field_event" formControlName="event" [compareWith]="compareEvent">
+          <ion-select-option [value]="null"></ion-select-option>
+          <ion-select-option [value]="eventOption" *ngFor="let eventOption of events; trackBy: trackEventById"
+            >{{eventOption.id}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Service Map</ion-label>
+        <ion-select id="field_serviceMap" formControlName="serviceMap" [compareWith]="compareServiceMap">
+          <ion-select-option [value]="null"></ion-select-option>
+          <ion-select-option [value]="serviceMapOption" *ngFor="let serviceMapOption of serviceMaps; trackBy: trackServiceMapById"
+            >{{serviceMapOption.id}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Cart</ion-label>
+        <ion-select id="field_cart" formControlName="cart" [compareWith]="compareCart">
+          <ion-select-option [value]="null"></ion-select-option>
+          <ion-select-option [value]="cartOption" *ngFor="let cartOption of carts; trackBy: trackCartById"
+            >{{cartOption.id}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

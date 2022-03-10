@@ -1,0 +1,36 @@
+{
+  "name": "FeeBalance",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "FeeType",
+      "fieldValues": "EVENT,EVENTPRODUCTORDER,EVENTSERVICEMAPORDER,ORGANIZATIONRESERVATION"
+    },
+    {
+      "fieldName": "total",
+      "fieldType": "Float"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "feeBalance",
+      "relationshipName": "user"
+    }
+  ],
+  "entityTableName": "fee_balance",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220215082411"
+}

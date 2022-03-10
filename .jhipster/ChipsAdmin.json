@@ -1,0 +1,20 @@
+{
+  "name": "ChipsAdmin",
+  "fields": [
+    {
+      "fieldName": "gameActive",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "chips_admin",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220215082414"
+}

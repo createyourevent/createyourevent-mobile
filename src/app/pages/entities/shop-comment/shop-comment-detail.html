@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Shop Comment </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">ID</ion-label>
+      <div item-content>
+        <span>{{shopComment.id}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Comment</ion-label>
+      <div item-content>
+        <span>{{shopComment.comment}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Date</ion-label>
+      <div item-content>
+        <span>{{shopComment.date | date:'medium'}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Shop</ion-label>
+      <div item-content *ngIf="shopComment.shop">
+        <a>{{shopComment.shop?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>User</ion-label>
+      <div item-content>{{shopComment.user?.id}}</div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Shop Comment</ion-label>
+      <div item-content *ngIf="shopComment.shopComment">
+        <a>{{shopComment.shopComment?.id}}</a>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="open(shopComment)">{{ 'EDIT_BUTTON' | translate }}</ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteModal(shopComment)">{{ 'DELETE_BUTTON' | translate }}</ion-button>
+</ion-content>

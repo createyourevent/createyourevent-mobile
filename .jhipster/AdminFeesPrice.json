@@ -1,0 +1,32 @@
+{
+  "name": "AdminFeesPrice",
+  "fields": [
+    {
+      "fieldName": "feesOrganisator",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "feesSupplier",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "feesService",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "feesOrganizations",
+      "fieldType": "Float"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "admin_fees_price",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220215082330"
+}

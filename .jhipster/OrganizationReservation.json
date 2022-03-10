@@ -1,0 +1,70 @@
+{
+  "name": "OrganizationReservation",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "dateFrom",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "dateUntil",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "seen",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "approved",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "total",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "feeBilled",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "organizationReservation",
+      "relationshipName": "user"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "event",
+      "otherEntityRelationshipName": "organizationReservations",
+      "relationshipName": "event"
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "feeTransaction",
+      "otherEntityRelationshipName": "organizationReservation",
+      "relationshipName": "feeTransaction",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "organizationReservations",
+      "relationshipName": "organization"
+    }
+  ],
+  "entityTableName": "organization_reservation",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220215082327"
+}

@@ -1,0 +1,55 @@
+{
+  "name": "OrganizationComment",
+  "fields": [
+    {
+      "fieldName": "comment",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "organizationComment",
+      "otherEntityRelationshipName": "organizationComment",
+      "relationshipName": "organizationComments"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "organizationComment",
+      "relationshipName": "organization"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "organizationComment",
+      "relationshipName": "user"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "organizationComment",
+      "relationshipName": "event"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "organizationComment",
+      "otherEntityRelationshipName": "organizationComments",
+      "relationshipName": "organizationComment"
+    }
+  ],
+  "entityTableName": "organization_comment",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220215082350"
+}

@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Organization Comment </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">ID</ion-label>
+      <div item-content>
+        <span>{{organizationComment.id}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Comment</ion-label>
+      <div item-content>
+        <span>{{organizationComment.comment}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Date</ion-label>
+      <div item-content>
+        <span>{{organizationComment.date | date:'medium'}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Organization</ion-label>
+      <div item-content *ngIf="organizationComment.organization">
+        <a>{{organizationComment.organization?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>User</ion-label>
+      <div item-content>{{organizationComment.user?.id}}</div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Event</ion-label>
+      <div item-content *ngIf="organizationComment.event">
+        <a>{{organizationComment.event?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Organization Comment</ion-label>
+      <div item-content *ngIf="organizationComment.organizationComment">
+        <a>{{organizationComment.organizationComment?.id}}</a>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="open(organizationComment)">{{ 'EDIT_BUTTON' | translate }}</ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteModal(organizationComment)">{{ 'DELETE_BUTTON' | translate }}</ion-button>
+</ion-content>

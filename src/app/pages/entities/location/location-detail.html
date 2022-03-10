@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Location </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">ID</ion-label>
+      <div item-content>
+        <span>{{location.id}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Name</ion-label>
+      <div item-content>
+        <span>{{location.name}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Description</ion-label>
+      <div item-content>
+        <span>{{location.description}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Photo</ion-label>
+      <div item-content>
+        <div *ngIf="location.photo">
+          <a (click)="openFile(location.photoContentType, location.photo)">
+            <img [src]="'data:' + location.photoContentType + ';base64,' + location.photo" style="max-width: 100%" alt="location image" />
+          </a>
+          {{location.photoContentType}}, {{byteSize(location.photo)}}
+        </div>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Address</ion-label>
+      <div item-content *ngIf="location.address">
+        <a>{{location.address?.id}}</a>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="open(location)">{{ 'EDIT_BUTTON' | translate }}</ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteModal(location)">{{ 'DELETE_BUTTON' | translate }}</ion-button>
+</ion-content>

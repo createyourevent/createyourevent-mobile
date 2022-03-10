@@ -1,0 +1,715 @@
+enum DeliveryTypes {
+    PICKUP, DELIVERY, SHIPPING
+}
+
+enum EventCategory {
+    INDOOR, OUTDOOR, BIRTHDAY, NATIONAL_HOLYDAY, WEDDING, GRADUATION, HALLOWEEN, NEWYEAR
+}
+
+enum ProductType {
+    REAL_ESTATE, FOOD, DRINK, MUSIC, LIGHTSHOW, DECORATION, MISCELLANEOUS
+}
+
+enum RentType {
+    HOURLY, HALFDAY, DAY
+}
+
+enum RentStatus {
+    BOOKED, RENTED, BACK
+}
+
+enum PriceType {
+    SELL, RENT
+}
+
+enum WorksheetType {
+    OFFER, BILLING
+}
+
+enum FeeType {
+    EVENT, EVENTPRODUCTORDER, EVENTSERVICEMAPORDER, ORGANIZATIONRESERVATION
+}
+
+enum UserType {
+    USER, SUPPLIER, ORGANIZOR, SERVICE, ORGANIZER
+}
+
+enum OrderStatus {
+    NEW, PROCESSING, COMPLETED
+}
+
+enum EventStatus {
+    PROCESSING, DEFINITELY
+}
+
+enum Unit {
+    ITEM, GRAM, KILOGRAM, TONNE, MILLIMETER, CENTIMETER, METER, MILILITER, CENTILITER, DECILITER, LITER
+}
+
+enum ServiceCategory {
+    SECURITAS, SHUTTLESERVICE, SANITARY, CLEANINGSERVICE, PLUMBER, DISCJOKEY, BAND, ELECTRONICSTECHNICIAN, COMPUTERSCIENTIST, MISCELLANEOUS
+}
+
+enum OrganizationType {
+    RESTAURANT, HOTEL, CLUB, BUILDING
+}
+
+enum PointsCategory {
+    EVENT, SHOP, SERVICE, COMMENT, RATING, REGISTER, MISCELLANEOUS, PRODUCT
+}
+
+
+entity Point {
+    key String
+    name String
+    keyName String
+    description TextBlob
+    keyDescription String
+    category PointsCategory
+    points Long
+    countPerDay Long
+    creationDate ZonedDateTime
+}
+
+
+entity PointsExchange {
+    pointsTotal Long
+    bondPointsTotal Long
+}
+
+entity Bond {
+    name String
+    description TextBlob
+    code String
+    points Long
+    creationDate ZonedDateTime
+    redemptionDate ZonedDateTime
+}
+
+
+entity UserPointAssociation{
+    date ZonedDateTime
+}
+
+entity Organization {
+    name String required
+    organizationType OrganizationType required
+    logo ImageBlob
+    active Boolean
+    activeOwner Boolean
+    description TextBlob required
+    address String required
+    motto String required
+    phone String required
+    webAddress String
+    placeNumber Integer
+    price Float
+    rentType RentType
+    rentable Boolean
+}
+
+entity OrganizationReservation {
+    date ZonedDateTime
+    dateFrom ZonedDateTime
+    dateUntil ZonedDateTime
+    seen Boolean
+    approved Boolean
+    total Float
+    feeBilled Boolean
+}
+
+entity Building {
+    surface Float
+}
+
+entity Worksheet {
+    description String required
+    start ZonedDateTime required
+    end ZonedDateTime required
+    costHour Float required
+    total Float required
+    billingType WorksheetType
+    userType UserType
+}
+
+entity AdminFeesPrice {
+    feesOrganisator Float
+    feesSupplier Float
+    feesService Float
+    feesOrganizations Float
+}
+
+
+entity Shop {
+    name String required
+    productType ProductType required
+    logo ImageBlob
+    active Boolean
+    activeOwner Boolean
+    description TextBlob required
+    address String required
+    motto String required
+    phone String required
+    webAddress String
+}
+
+
+
+entity Restaurant {
+    menu TextBlob
+}
+
+entity Club {
+    priceCard TextBlob
+}
+
+entity Hotel {
+    menu TextBlob
+    placesToSleep Integer
+
+}
+
+entity CreateYourEventService {
+    name String required
+    logo ImageBlob
+    active Boolean
+    activeOwner Boolean
+    description TextBlob required
+    address String required
+    motto String required
+    phone String required
+    webAddress String
+    category ServiceCategory required
+}
+
+entity ServiceOffer {
+    title String required
+    description TextBlob required
+    costHour Float required
+}
+
+entity ServiceMap {
+    title String required
+}
+
+entity RideCosts {
+    pricePerKilometre Float required
+}
+
+
+entity Order {
+    status OrderStatus
+    dateAdded ZonedDateTime
+}
+
+entity ShopComment {
+    comment String
+    date ZonedDateTime
+}
+
+entity EventDetails {
+    totalEntranceFee Float
+}
+
+entity Reservation {
+    date ZonedDateTime
+    billed Boolean
+    accessEvent Boolean
+    accessDate ZonedDateTime
+    tdTxId String
+}
+
+entity Product {
+    title String required
+    keywords String
+    description TextBlob required
+    dateAdded ZonedDateTime
+    dateModified ZonedDateTime
+    priceType PriceType
+    rentType RentType
+    price Float required
+    photo ImageBlob required
+    photo2 ImageBlob
+    photo3 ImageBlob
+    youtube String
+    active Boolean
+    stock Float required
+    productType ProductType
+    itemNumber String
+    status OrderStatus
+    unit Unit required
+    amount Float
+    motto String required
+}
+
+entity DeliveryType {
+    deliveryType DeliveryTypes
+    minimumOrderQuantity Float
+    price Float
+    pricePerKilometre Float
+}
+
+entity ShopLikeDislike {
+    like Integer
+    dislike Integer
+    date ZonedDateTime
+    comment String
+}
+
+entity ServiceLikeDislike {
+    like Integer
+    dislike Integer
+    date ZonedDateTime
+    comment String
+}
+
+entity ProductLikeDislike {
+    like Integer
+    dislike Integer
+    date ZonedDateTime
+    comment String
+}
+
+entity ProductComment {
+    comment String
+    date ZonedDateTime
+}
+
+entity OrganizationLikeDislike {
+    like Integer
+    dislike Integer
+    date ZonedDateTime
+    comment String
+}
+
+entity OrganizationComment {
+    comment String
+    date ZonedDateTime
+}
+
+entity ServiceComment {
+    comment String
+    date ZonedDateTime
+}
+
+entity EventLikeDislike {
+    like Integer
+    dislike Integer
+    date ZonedDateTime
+    comment String
+}
+
+entity EventComment {
+    comment String
+    date ZonedDateTime
+}
+
+entity EventProductRating {
+    like Integer
+    dislike Integer
+    date ZonedDateTime
+    comment String
+}
+
+entity EventStarRating {
+    stars Integer
+    date ZonedDateTime
+    comment String
+}
+
+entity OrganizationStarRating {
+    stars Integer
+    date ZonedDateTime
+    comment String
+}
+
+entity ShopStarRating {
+    stars Integer
+    date ZonedDateTime
+    comment String
+}
+
+entity ProductStarRating {
+    stars Integer
+    date ZonedDateTime
+    comment String
+}
+
+entity ServiceStarRating {
+    stars Integer
+    date ZonedDateTime
+    comment String
+}
+
+entity EventProductOrder {
+    amount Integer
+    total Float
+    date ZonedDateTime
+    rentalPeriod Integer
+    dateFrom ZonedDateTime
+    dateUntil ZonedDateTime
+    status RentStatus
+    billed Boolean
+    seen Boolean
+    approved Boolean
+    sellingPrice Float
+
+}
+
+entity EventServiceMapOrder {
+    date ZonedDateTime
+    dateFrom ZonedDateTime
+    dateUntil ZonedDateTime
+    costHour Float
+    rideCosts Float
+    total Float
+    totalHours String
+    kilometre Float
+    billed Boolean
+    seen Boolean
+    approved Boolean
+}
+
+entity ReservationTransactionId {
+    transactionDepositId String
+    transactionId String
+}
+
+entity FeeTransactionId {
+    transactionId String
+}
+
+entity FeeTransaction {
+    date ZonedDateTime
+}
+
+entity FeeTransactionEntry {
+    type FeeType
+    value Float
+}
+
+entity Cart {
+    date ZonedDateTime
+    totalCosts Float
+}
+
+entity EventProductRatingComment {
+    comment String
+    date ZonedDateTime
+}
+
+entity Event {
+    name String required
+    description TextBlob required
+    dateStart ZonedDateTime required
+    dateEnd ZonedDateTime required
+    category EventCategory required
+    price Float required
+    flyer ImageBlob
+    youtube String
+    privateOrPublic String required
+    active Boolean
+    minPlacenumber Integer required
+    placenumber Integer required
+    investment Float required
+    status EventStatus
+    definitelyConfirmed Boolean
+    motto String required
+    billed Boolean
+    stars Float
+    billedOrganisator Boolean
+    billedeCreateYourEvent Boolean
+}
+
+entity Image {
+    name String
+    image ImageBlob
+}
+
+entity Chips {
+    points Integer
+    website String
+    x Integer
+    y Integer
+    image ImageBlob
+    color String
+}
+
+entity FeeBalance {
+    date ZonedDateTime
+    type FeeType
+    total Float
+}
+
+entity ChipsCollectionChips {
+
+}
+
+entity ChipsCollection {
+}
+
+entity ChipsAdmin {
+    gameActive Boolean
+}
+
+
+entity Location {
+    name String required
+    description TextBlob required
+    photo ImageBlob
+}
+
+
+entity Address {
+    address String
+    lat Float
+    lng Float
+}
+
+entity Contact {
+    name String required
+    email String required
+    message TextBlob required
+    date ZonedDateTime
+}
+
+entity Tags {
+    tag String
+}
+
+entity Gift {
+    title String required
+    description TextBlob required
+    photo ImageBlob required
+    points Integer required
+    active Boolean
+    stock Long
+}
+
+entity GiftShoppingCart {
+    date ZonedDateTime
+    amount Integer
+}
+
+entity Property {
+    key String
+    value String
+}
+
+entity Partner {
+    name String required
+    address String required
+    phone String required
+    logo ImageBlob required
+    mail String required
+    webaddress String required
+    sponsorshipAmount Float
+    active Boolean
+}
+
+entity UserExtension {
+    address String
+    phone String
+    loggedIn Boolean
+    points Integer
+}
+
+entity Mp3 {
+    title String
+    artists String
+    duration Integer
+    url String
+}
+
+entity Ticket {
+    amount Integer
+    total Float
+    date ZonedDateTime
+    refNo String
+    accessDate ZonedDateTime
+    ticketsUsed Integer
+}
+
+entity Coupon {
+    title String
+    value Float
+    description TextBlob
+    couponNr String
+    used Boolean
+}
+
+entity SlotListClock {
+    coupons String
+}
+
+entity SlotListCherry {
+    coupons String
+}
+
+entity SlotListOrange {
+    coupons String
+}
+
+entity SlotListPlum {
+    coupons String
+}
+
+
+relationship OneToOne {
+    Event to Location
+    Location to Address
+    Event{eventDetail} to EventDetails{event}
+    ServiceMap{rideCost} to RideCosts{serviceMap}
+    ChipsCollection{user} to User
+    Reservation{transactionId} to ReservationTransactionId{reservation}
+    FeeTransaction{transactionId} to FeeTransactionId{feeTransaction}
+
+    FeeTransaction{eventProductOrder} to EventProductOrder{feeTransaction}
+    FeeTransaction{eventServiceMapOrder} to EventServiceMapOrder{feeTransaction}
+    FeeTransaction{event} to Event{feeTransaction}
+    FeeTransaction{organizationReservation} to OrganizationReservation{feeTransaction}
+    Reservation{ticket} to Ticket{reservation}
+
+    Restaurant{organization} to Organization{restaurant}
+    Hotel{organization} to Organization{hotel}
+    Club{organization} to Organization{club}
+    Building{organization} to Organization{building}
+
+}
+
+relationship OneToMany {
+    Shop{product} to Product{shop}
+    Event{eventProductOrders} to EventProductOrder{event}
+    Product{eventProductOrders} to EventProductOrder{product}
+
+    Shop{eventProductOrders} to EventProductOrder{shop}
+
+    Event{reservations} to Reservation{event}
+    Event{comments} to EventProductRatingComment{event}
+    Product{comments} to EventProductRatingComment{product}
+    // Worksheet
+    Event{worksheets} to Worksheet{event}
+    Product{worksheets} to Worksheet{product}
+
+    CreateYourEventService{serviceMaps} to ServiceMap{createYourEventService}
+    ServiceMap{serviceOffers} to ServiceOffer{serviceMaps}
+
+    Event{eventServiceMapOrders} to EventServiceMapOrder{event}
+    ServiceMap{eventServiceMapOrders} to EventServiceMapOrder{serviceMap}
+
+    Cart{products} to EventProductOrder{cart}
+    Cart{services} to EventServiceMapOrder{cart}
+
+    ChipsCollection{chipsCollectionChips} to ChipsCollectionChips{chipsCollection}
+    Chips{chipsCollectionChips} to ChipsCollectionChips{chips}
+
+    Gift{giftShoppingCarts} to GiftShoppingCart{gift}
+
+    DeliveryType{eventProductOrders} to EventProductOrder{deliveryType}
+
+    Product{images} to Image{product}
+    Shop{images} to Image{shop}
+    Event{images} to Image{event}
+    CreateYourEventService{images} to Image{service}
+    Organization{images} to Image{organization}
+
+    Product{mp3s} to Mp3{product}
+    Shop{mp3s} to Mp3{shop}
+    Event{mp3s} to Mp3{event}
+    CreateYourEventService{mp3s} to Mp3{service}
+
+    FeeTransaction{entries} to FeeTransactionEntry{feeTransaction}
+
+    PointsExchange{bonds} to Bond{pointsExchange}
+
+    ShopComment{shopComments} to ShopComment{shopComment}
+    ProductComment{productComments} to ProductComment{productComment}
+    EventComment{eventComments} to EventComment{eventComment}
+    ServiceComment{serviceComments} to ServiceComment{serviceComment}
+    OrganizationComment{organizationComments} to OrganizationComment{organizationComment}
+    Organization{organizationReservations} to OrganizationReservation{organization}
+}
+
+relationship ManyToOne {
+  Coupon{user} to User
+  Shop{user} to User
+  Organization{user} to User
+  Event{user} to User
+  Coupon{event} to Event
+
+  FeeTransaction{user} to User
+
+  Hotel{user} to User
+  Club{user} to User
+  Restaurant{user} to User
+
+  OrganizationStarRating{organization} to Organization
+  OrganizationStarRating{user} to User
+  EventStarRating{event} to Event
+  EventStarRating{user} to User
+  ShopStarRating{shop} to Shop
+  ShopStarRating{user} to User
+  ProductStarRating{product} to Product
+  ProductStarRating{user} to User
+  ServiceStarRating{service} to CreateYourEventService
+  ServiceStarRating{user} to User
+  Image{user} to User
+  Mp3{user} to User
+  EventProductRating{product} to Product
+  EventProductRating{event} to Event
+  EventProductOrder{user} to User
+  Reservation{user} to User
+  EventProductRating{user} to User
+  EventProductRatingComment{user} to User
+  // Worksheet
+  Worksheet{user} to User
+  //Images
+  ShopLikeDislike{shop} to Shop
+  ShopComment{shop} to Shop{comments}
+  ShopComment{user} to User
+  ProductComment{product} to Product
+  ProductComment{user} to User
+  OrganizationComment{organization} to Organization
+  OrganizationComment{user} to User
+  ProductLikeDislike{product} to Product
+  OrganizationLikeDislike{organization} to Organization
+  EventComment{event} to Event
+  EventComment{user} to User
+  ServiceComment{createYourEventService} to CreateYourEventService
+  ServiceComment{user} to User
+  EventLikeDislike{event} to Event
+  ServiceLikeDislike{createYourEventService} to CreateYourEventService
+  ShopLikeDislike{user} to User
+  ProductLikeDislike{user} to User
+  ServiceLikeDislike{user} to User
+  EventLikeDislike{user} to User
+  CreateYourEventService{user} to User
+
+  OrganizationLikeDislike{event} to Organization
+  OrganizationComment{event} to Organization
+  OrganizationComment{user} to User
+  OrganizationLikeDislike{user} to User
+
+  Tags{event} to Event{tags}
+  Tags{product} to Product{tags}
+  Tags{shop} to Shop{tags}
+  Tags{service} to CreateYourEventService{tags}
+  Tags{organization} to Organization{tags}
+
+  UserPointAssociation{points} to Point
+  UserPointAssociation{users} to User
+
+  GiftShoppingCart{user} to User
+  UserExtension{user} to User
+  DeliveryType{product} to Product{deliveryTypes}
+
+  Bond{user} to User
+
+  FeeBalance{user} to User
+
+  Ticket{event} to Event
+  Ticket{user} to User
+
+  OrganizationReservation{user} to User
+  OrganizationReservation{event} to Event{organizationReservations}
+}

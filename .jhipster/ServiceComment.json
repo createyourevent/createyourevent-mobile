@@ -1,0 +1,49 @@
+{
+  "name": "ServiceComment",
+  "fields": [
+    {
+      "fieldName": "comment",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "serviceComment",
+      "otherEntityRelationshipName": "serviceComment",
+      "relationshipName": "serviceComments"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "createYourEventService",
+      "otherEntityRelationshipName": "serviceComment",
+      "relationshipName": "createYourEventService"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "serviceComment",
+      "relationshipName": "user"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "serviceComment",
+      "otherEntityRelationshipName": "serviceComments",
+      "relationshipName": "serviceComment"
+    }
+  ],
+  "entityTableName": "service_comment",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220215082351"
+}

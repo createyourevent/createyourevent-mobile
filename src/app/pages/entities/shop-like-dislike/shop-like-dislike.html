@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Shop Like Dislikes </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- todo: add elasticsearch support -->
+<ion-content class="ion-padding">
+  <ion-refresher [disabled]="plt.is('desktop')" slot="fixed" (ionRefresh)="loadAll($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let shopLikeDislike of shopLikeDislikes; trackBy: trackId" #slidingItem>
+      <ion-item (click)="view(shopLikeDislike)">
+        <ion-label text-wrap>
+          <p>{{shopLikeDislike.id}}</p>
+          <p>{{shopLikeDislike.like}}</p>
+          <p>{{shopLikeDislike.dislike}}</p>
+          <p>{{shopLikeDislike.date | date:'medium'}}</p>
+          <p>{{shopLikeDislike.comment}}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="primary" (click)="edit(slidingItem, shopLikeDislike)"> {{ 'EDIT_BUTTON' | translate }} </ion-item-option>
+        <ion-item-option color="danger" (click)="delete(shopLikeDislike)"> {{ 'DELETE_BUTTON' | translate }} </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-item *ngIf="!shopLikeDislikes?.length">
+    <ion-label> No Shop Like Dislikes found. </ion-label>
+  </ion-item>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="new()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Service Map </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">ID</ion-label>
+      <div item-content>
+        <span>{{serviceMap.id}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Title</ion-label>
+      <div item-content>
+        <span>{{serviceMap.title}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Ride Cost</ion-label>
+      <div item-content *ngIf="serviceMap.rideCost">
+        <a>{{serviceMap.rideCost?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Create Your Event Service</ion-label>
+      <div item-content *ngIf="serviceMap.createYourEventService">
+        <a>{{serviceMap.createYourEventService?.id}}</a>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="open(serviceMap)">{{ 'EDIT_BUTTON' | translate }}</ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteModal(serviceMap)">{{ 'DELETE_BUTTON' | translate }}</ion-button>
+</ion-content>

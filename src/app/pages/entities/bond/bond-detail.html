@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Bond </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">ID</ion-label>
+      <div item-content>
+        <span>{{bond.id}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Name</ion-label>
+      <div item-content>
+        <span>{{bond.name}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Description</ion-label>
+      <div item-content>
+        <span>{{bond.description}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Code</ion-label>
+      <div item-content>
+        <span>{{bond.code}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Points</ion-label>
+      <div item-content>
+        <span>{{bond.points}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Creation Date</ion-label>
+      <div item-content>
+        <span>{{bond.creationDate | date:'medium'}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Redemption Date</ion-label>
+      <div item-content>
+        <span>{{bond.redemptionDate | date:'medium'}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>User</ion-label>
+      <div item-content>{{bond.user?.id}}</div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Points Exchange</ion-label>
+      <div item-content *ngIf="bond.pointsExchange">
+        <a>{{bond.pointsExchange?.id}}</a>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="open(bond)">{{ 'EDIT_BUTTON' | translate }}</ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteModal(bond)">{{ 'DELETE_BUTTON' | translate }}</ion-button>
+</ion-content>

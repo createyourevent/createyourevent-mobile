@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Organization Star Ratings </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- todo: add elasticsearch support -->
+<ion-content class="ion-padding">
+  <ion-refresher [disabled]="plt.is('desktop')" slot="fixed" (ionRefresh)="loadAll($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let organizationStarRating of organizationStarRatings; trackBy: trackId" #slidingItem>
+      <ion-item (click)="view(organizationStarRating)">
+        <ion-label text-wrap>
+          <p>{{organizationStarRating.id}}</p>
+          <p>{{organizationStarRating.stars}}</p>
+          <p>{{organizationStarRating.date | date:'medium'}}</p>
+          <p>{{organizationStarRating.comment}}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="primary" (click)="edit(slidingItem, organizationStarRating)">
+          {{ 'EDIT_BUTTON' | translate }}
+        </ion-item-option>
+        <ion-item-option color="danger" (click)="delete(organizationStarRating)"> {{ 'DELETE_BUTTON' | translate }} </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-item *ngIf="!organizationStarRatings?.length">
+    <ion-label> No Organization Star Ratings found. </ion-label>
+  </ion-item>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="new()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

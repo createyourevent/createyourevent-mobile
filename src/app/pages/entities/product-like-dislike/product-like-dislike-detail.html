@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Product Like Dislike </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">ID</ion-label>
+      <div item-content>
+        <span>{{productLikeDislike.id}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Like</ion-label>
+      <div item-content>
+        <span>{{productLikeDislike.like}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Dislike</ion-label>
+      <div item-content>
+        <span>{{productLikeDislike.dislike}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Date</ion-label>
+      <div item-content>
+        <span>{{productLikeDislike.date | date:'medium'}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Comment</ion-label>
+      <div item-content>
+        <span>{{productLikeDislike.comment}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Product</ion-label>
+      <div item-content *ngIf="productLikeDislike.product">
+        <a>{{productLikeDislike.product?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>User</ion-label>
+      <div item-content>{{productLikeDislike.user?.id}}</div>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="open(productLikeDislike)">{{ 'EDIT_BUTTON' | translate }}</ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteModal(productLikeDislike)">{{ 'DELETE_BUTTON' | translate }}</ion-button>
+</ion-content>

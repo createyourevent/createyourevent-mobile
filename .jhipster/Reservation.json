@@ -1,0 +1,63 @@
+{
+  "name": "Reservation",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "billed",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "accessEvent",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "accessDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "tdTxId",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "reservationTransactionId",
+      "otherEntityRelationshipName": "reservation",
+      "relationshipName": "transactionId",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "ticket",
+      "otherEntityRelationshipName": "reservation",
+      "relationshipName": "ticket",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "reservation",
+      "relationshipName": "user"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "event",
+      "otherEntityRelationshipName": "reservations",
+      "relationshipName": "event"
+    }
+  ],
+  "entityTableName": "reservation",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220215082342"
+}

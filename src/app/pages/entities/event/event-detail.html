@@ -1,0 +1,163 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Event </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">ID</ion-label>
+      <div item-content>
+        <span>{{event.id}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Name</ion-label>
+      <div item-content>
+        <span>{{event.name}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Description</ion-label>
+      <div item-content>
+        <span>{{event.description}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Date Start</ion-label>
+      <div item-content>
+        <span>{{event.dateStart | date:'medium'}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Date End</ion-label>
+      <div item-content>
+        <span>{{event.dateEnd | date:'medium'}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Category</ion-label>
+      <div item-content>
+        <span>{{event.category}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Price</ion-label>
+      <div item-content>
+        <span>{{event.price}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Flyer</ion-label>
+      <div item-content>
+        <div *ngIf="event.flyer">
+          <a (click)="openFile(event.flyerContentType, event.flyer)">
+            <img [src]="'data:' + event.flyerContentType + ';base64,' + event.flyer" style="max-width: 100%" alt="event image" />
+          </a>
+          {{event.flyerContentType}}, {{byteSize(event.flyer)}}
+        </div>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Youtube</ion-label>
+      <div item-content>
+        <span>{{event.youtube}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Private Or Public</ion-label>
+      <div item-content>
+        <span>{{event.privateOrPublic}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Active</ion-label>
+      <div item-content>
+        <span>{{event.active}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Min Placenumber</ion-label>
+      <div item-content>
+        <span>{{event.minPlacenumber}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Placenumber</ion-label>
+      <div item-content>
+        <span>{{event.placenumber}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Investment</ion-label>
+      <div item-content>
+        <span>{{event.investment}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Status</ion-label>
+      <div item-content>
+        <span>{{event.status}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Definitely Confirmed</ion-label>
+      <div item-content>
+        <span>{{event.definitelyConfirmed}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Motto</ion-label>
+      <div item-content>
+        <span>{{event.motto}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Billed</ion-label>
+      <div item-content>
+        <span>{{event.billed}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Stars</ion-label>
+      <div item-content>
+        <span>{{event.stars}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Billed Organisator</ion-label>
+      <div item-content>
+        <span>{{event.billedOrganisator}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Billede Create Your Event</ion-label>
+      <div item-content>
+        <span>{{event.billedeCreateYourEvent}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Location</ion-label>
+      <div item-content *ngIf="event.location">
+        <a>{{event.location?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Event Detail</ion-label>
+      <div item-content *ngIf="event.eventDetail">
+        <a>{{event.eventDetail?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>User</ion-label>
+      <div item-content>{{event.user?.id}}</div>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="open(event)">{{ 'EDIT_BUTTON' | translate }}</ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteModal(event)">{{ 'DELETE_BUTTON' | translate }}</ion-button>
+</ion-content>

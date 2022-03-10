@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Organizations </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- todo: add elasticsearch support -->
+<ion-content class="ion-padding">
+  <ion-refresher [disabled]="plt.is('desktop')" slot="fixed" (ionRefresh)="loadAll($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let organization of organizations; trackBy: trackId" #slidingItem>
+      <ion-item (click)="view(organization)">
+        <ion-label text-wrap>
+          <p>{{organization.id}}</p>
+          <ion-text color="primary"><h2>{{organization.name}}</h2></ion-text>
+          <!-- todo: special handling for translating enum - {{'OrganizationType.' + organization.organizationType}}" -->
+          <p>{{organization.organizationType}}</p>
+          <ion-avatar *ngIf="organization.logo">
+            <img [src]="'data:' + organization.logoContentType + ';base64,' + organization.logo" />
+          </ion-avatar>
+          <p>{{organization.active}}</p>
+          <p>{{organization.activeOwner}}</p>
+          <p>{{organization.description}}</p>
+          <p>{{organization.address}}</p>
+          <p>{{organization.motto}}</p>
+          <p>{{organization.phone}}</p>
+          <p>{{organization.webAddress}}</p>
+          <p>{{organization.placeNumber}}</p>
+          <p>{{organization.price}}</p>
+          <!-- todo: special handling for translating enum - {{'RentType.' + organization.rentType}}" -->
+          <p>{{organization.rentType}}</p>
+          <p>{{organization.rentable}}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="primary" (click)="edit(slidingItem, organization)"> {{ 'EDIT_BUTTON' | translate }} </ion-item-option>
+        <ion-item-option color="danger" (click)="delete(organization)"> {{ 'DELETE_BUTTON' | translate }} </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-item *ngIf="!organizations?.length">
+    <ion-label> No Organizations found. </ion-label>
+  </ion-item>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="new()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

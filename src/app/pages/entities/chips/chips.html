@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Chips </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- todo: add elasticsearch support -->
+<ion-content class="ion-padding">
+  <ion-refresher [disabled]="plt.is('desktop')" slot="fixed" (ionRefresh)="loadAll($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let chips of chips; trackBy: trackId" #slidingItem>
+      <ion-item (click)="view(chips)">
+        <ion-label text-wrap>
+          <p>{{chips.id}}</p>
+          <p>{{chips.points}}</p>
+          <p>{{chips.website}}</p>
+          <p>{{chips.x}}</p>
+          <p>{{chips.y}}</p>
+          <ion-avatar *ngIf="chips.image">
+            <img [src]="'data:' + chips.imageContentType + ';base64,' + chips.image" />
+          </ion-avatar>
+          <p>{{chips.color}}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="primary" (click)="edit(slidingItem, chips)"> {{ 'EDIT_BUTTON' | translate }} </ion-item-option>
+        <ion-item-option color="danger" (click)="delete(chips)"> {{ 'DELETE_BUTTON' | translate }} </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-item *ngIf="!chips?.length">
+    <ion-label> No Chips found. </ion-label>
+  </ion-item>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="new()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

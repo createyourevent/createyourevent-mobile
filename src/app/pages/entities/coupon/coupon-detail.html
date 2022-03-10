@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Coupon </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">ID</ion-label>
+      <div item-content>
+        <span>{{coupon.id}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Title</ion-label>
+      <div item-content>
+        <span>{{coupon.title}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Value</ion-label>
+      <div item-content>
+        <span>{{coupon.value}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Description</ion-label>
+      <div item-content>
+        <span>{{coupon.description}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Coupon Nr</ion-label>
+      <div item-content>
+        <span>{{coupon.couponNr}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Used</ion-label>
+      <div item-content>
+        <span>{{coupon.used}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>User</ion-label>
+      <div item-content>{{coupon.user?.id}}</div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Event</ion-label>
+      <div item-content *ngIf="coupon.event">
+        <a>{{coupon.event?.id}}</a>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="open(coupon)">{{ 'EDIT_BUTTON' | translate }}</ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteModal(coupon)">{{ 'DELETE_BUTTON' | translate }}</ion-button>
+</ion-content>

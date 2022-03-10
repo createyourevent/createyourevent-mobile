@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Point </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">ID</ion-label>
+      <div item-content>
+        <span>{{point.id}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Key</ion-label>
+      <div item-content>
+        <span>{{point.key}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Name</ion-label>
+      <div item-content>
+        <span>{{point.name}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Key Name</ion-label>
+      <div item-content>
+        <span>{{point.keyName}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Description</ion-label>
+      <div item-content>
+        <span>{{point.description}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Key Description</ion-label>
+      <div item-content>
+        <span>{{point.keyDescription}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Category</ion-label>
+      <div item-content>
+        <span>{{point.category}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Points</ion-label>
+      <div item-content>
+        <span>{{point.points}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Count Per Day</ion-label>
+      <div item-content>
+        <span>{{point.countPerDay}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Creation Date</ion-label>
+      <div item-content>
+        <span>{{point.creationDate | date:'medium'}}</span>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="open(point)">{{ 'EDIT_BUTTON' | translate }}</ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteModal(point)">{{ 'DELETE_BUTTON' | translate }}</ion-button>
+</ion-content>

@@ -1,0 +1,35 @@
+{
+  "name": "Restaurant",
+  "fields": [
+    {
+      "fieldName": "menu",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "restaurant",
+      "relationshipName": "organization",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "restaurant",
+      "relationshipName": "user"
+    }
+  ],
+  "entityTableName": "restaurant",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220215082332"
+}

@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Image </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">ID</ion-label>
+      <div item-content>
+        <span>{{image.id}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Name</ion-label>
+      <div item-content>
+        <span>{{image.name}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Image</ion-label>
+      <div item-content>
+        <div *ngIf="image.image">
+          <a (click)="openFile(image.imageContentType, image.image)">
+            <img [src]="'data:' + image.imageContentType + ';base64,' + image.image" style="max-width: 100%" alt="image image" />
+          </a>
+          {{image.imageContentType}}, {{byteSize(image.image)}}
+        </div>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>User</ion-label>
+      <div item-content>{{image.user?.id}}</div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Product</ion-label>
+      <div item-content *ngIf="image.product">
+        <a>{{image.product?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Shop</ion-label>
+      <div item-content *ngIf="image.shop">
+        <a>{{image.shop?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Event</ion-label>
+      <div item-content *ngIf="image.event">
+        <a>{{image.event?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Service</ion-label>
+      <div item-content *ngIf="image.service">
+        <a>{{image.service?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Organization</ion-label>
+      <div item-content *ngIf="image.organization">
+        <a>{{image.organization?.id}}</a>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="open(image)">{{ 'EDIT_BUTTON' | translate }}</ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteModal(image)">{{ 'DELETE_BUTTON' | translate }}</ion-button>
+</ion-content>

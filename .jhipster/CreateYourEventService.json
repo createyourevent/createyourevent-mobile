@@ -1,0 +1,96 @@
+{
+  "name": "CreateYourEventService",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "logo",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "active",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "activeOwner",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "address",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "motto",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "phone",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "webAddress",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "category",
+      "fieldType": "ServiceCategory",
+      "fieldValues": "SECURITAS,SHUTTLESERVICE,SANITARY,CLEANINGSERVICE,PLUMBER,DISCJOKEY,BAND,ELECTRONICSTECHNICIAN,COMPUTERSCIENTIST,MISCELLANEOUS",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "serviceMap",
+      "otherEntityRelationshipName": "createYourEventService",
+      "relationshipName": "serviceMaps"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "image",
+      "otherEntityRelationshipName": "service",
+      "relationshipName": "images"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "mp3",
+      "otherEntityRelationshipName": "service",
+      "relationshipName": "mp3s"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "createYourEventService",
+      "relationshipName": "user"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "tags",
+      "otherEntityRelationshipName": "service",
+      "relationshipName": "tags"
+    }
+  ],
+  "entityTableName": "create_your_event_service",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220215082335"
+}

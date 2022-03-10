@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Worksheet </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button [disabled]="!isReadyToSave" (click)="save()" color="primary">
+        <span *ngIf="platform.is('ios')">{{'DONE_BUTTON' | translate}}</span>
+        <ion-icon name="checkmark" *ngIf="!platform.is('ios')"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form *ngIf="form" name="form" [formGroup]="form" (ngSubmit)="save()">
+    <ion-list>
+      <ion-item [hidden]="!form.id">
+        <ion-label>ID</ion-label>
+        <ion-input type="hidden" id="id" formControlName="id" readonly></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Description</ion-label>
+        <ion-input type="text" name="description" formControlName="description"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Start</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY HH:mm" formControlName="start" id="field_start"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>End</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY HH:mm" formControlName="end" id="field_end"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Cost Hour</ion-label>
+        <ion-input type="number" name="costHour" formControlName="costHour"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Total</ion-label>
+        <ion-input type="number" name="total" formControlName="total"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Billing Type</ion-label>
+        <ion-select formControlName="billingType" id="field_billingType">
+          <ion-select-option value="OFFER">{{'WorksheetType.OFFER' | translate}}</ion-select-option>
+          <ion-select-option value="BILLING">{{'WorksheetType.BILLING' | translate}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>User Type</ion-label>
+        <ion-select formControlName="userType" id="field_userType">
+          <ion-select-option value="USER">{{'UserType.USER' | translate}}</ion-select-option>
+          <ion-select-option value="SUPPLIER">{{'UserType.SUPPLIER' | translate}}</ion-select-option>
+          <ion-select-option value="ORGANIZOR">{{'UserType.ORGANIZOR' | translate}}</ion-select-option>
+          <ion-select-option value="SERVICE">{{'UserType.SERVICE' | translate}}</ion-select-option>
+          <ion-select-option value="ORGANIZER">{{'UserType.ORGANIZER' | translate}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>User</ion-label>
+        <ion-select id="field_user" formControlName="user" [compareWith]="compareUser">
+          <ion-select-option [value]="null"></ion-select-option>
+          <ion-select-option [value]="userOption" *ngFor="let userOption of users; trackBy: trackUserById"
+            >{{userOption.id}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Event</ion-label>
+        <ion-select id="field_event" formControlName="event" [compareWith]="compareEvent">
+          <ion-select-option [value]="null"></ion-select-option>
+          <ion-select-option [value]="eventOption" *ngFor="let eventOption of events; trackBy: trackEventById"
+            >{{eventOption.id}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Product</ion-label>
+        <ion-select id="field_product" formControlName="product" [compareWith]="compareProduct">
+          <ion-select-option [value]="null"></ion-select-option>
+          <ion-select-option [value]="productOption" *ngFor="let productOption of products; trackBy: trackProductById"
+            >{{productOption.id}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

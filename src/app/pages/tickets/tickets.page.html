@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> {{ 'TICKETS_FROM' | translate }} {{account?.firstName}} </ion-title>
+
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-slides>
+    <ion-slide *ngFor="let reservation of reservations">
+      <ion-card>
+        <img src="../../../assets/img/dance.png" />
+        <ion-card-header>
+          <ion-card-subtitle>{{ reservation.user.firstName }} {{ reservation.user.lastName }}</ion-card-subtitle>
+          <ion-card-title>{{ reservation.event.name }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>{{ reservation.event.dateStart | date:"medium" }}</p>
+          <p>{{ reservation.event.dateEnd | date:"medium" }}</p>
+          <hr />
+          <p>{{ reservation.ticket.ticketsUsed }} / {{ reservation.ticket.amount }}</p>
+          <ion-button (click)="gotoBarcode(reservation.id)" id="gotoBarcode">
+            {{ 'QR_CODE' | translate }}
+            <ion-icon slot="end" name="qr-code-outline"></ion-icon>
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

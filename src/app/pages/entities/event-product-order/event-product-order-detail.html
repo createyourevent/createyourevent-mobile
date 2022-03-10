@@ -1,0 +1,122 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Event Product Order </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">ID</ion-label>
+      <div item-content>
+        <span>{{eventProductOrder.id}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Amount</ion-label>
+      <div item-content>
+        <span>{{eventProductOrder.amount}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Total</ion-label>
+      <div item-content>
+        <span>{{eventProductOrder.total}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Date</ion-label>
+      <div item-content>
+        <span>{{eventProductOrder.date | date:'medium'}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Rental Period</ion-label>
+      <div item-content>
+        <span>{{eventProductOrder.rentalPeriod}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Date From</ion-label>
+      <div item-content>
+        <span>{{eventProductOrder.dateFrom | date:'medium'}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Date Until</ion-label>
+      <div item-content>
+        <span>{{eventProductOrder.dateUntil | date:'medium'}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Status</ion-label>
+      <div item-content>
+        <span>{{eventProductOrder.status}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Billed</ion-label>
+      <div item-content>
+        <span>{{eventProductOrder.billed}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Seen</ion-label>
+      <div item-content>
+        <span>{{eventProductOrder.seen}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Approved</ion-label>
+      <div item-content>
+        <span>{{eventProductOrder.approved}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Selling Price</ion-label>
+      <div item-content>
+        <span>{{eventProductOrder.sellingPrice}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>User</ion-label>
+      <div item-content>{{eventProductOrder.user?.id}}</div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Event</ion-label>
+      <div item-content *ngIf="eventProductOrder.event">
+        <a>{{eventProductOrder.event?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Product</ion-label>
+      <div item-content *ngIf="eventProductOrder.product">
+        <a>{{eventProductOrder.product?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Shop</ion-label>
+      <div item-content *ngIf="eventProductOrder.shop">
+        <a>{{eventProductOrder.shop?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Cart</ion-label>
+      <div item-content *ngIf="eventProductOrder.cart">
+        <a>{{eventProductOrder.cart?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Delivery Type</ion-label>
+      <div item-content *ngIf="eventProductOrder.deliveryType">
+        <a>{{eventProductOrder.deliveryType?.id}}</a>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="open(eventProductOrder)">{{ 'EDIT_BUTTON' | translate }}</ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteModal(eventProductOrder)">{{ 'DELETE_BUTTON' | translate }}</ion-button>
+</ion-content>

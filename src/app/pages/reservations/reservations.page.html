@@ -1,0 +1,72 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title> Reservations</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-label>{{ 'FOR_EVENT' | translate}}</ion-label>
+    <ion-select [(ngModel)]="event" (ionChange)="onChange($event)" placeholder="{{ 'SELECT_EVENT' | translate }}">
+      <ion-select-option *ngFor="let event of events" value="{{ event.id }}">{{ event.name }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <hr />
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>{{ 'STAT_RESERVATIONS' | translate }}</ion-card-subtitle>
+      <ion-card-title>{{ 'RESERVATIONS' | translate }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col> {{ 'TOTAL_RESERVATIONEN' | translate }} </ion-col>
+          <ion-col> {{ reservations.length }} </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col> {{ 'TOTAL_ENTRIES' | translate }} </ion-col>
+          <ion-col> {{ totalPersons() }} </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col> {{ 'TOTAL_TICKETS' | translate }} </ion-col>
+          <ion-col> {{ tickets }} </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <hr />
+  <ion-list>
+    <ion-list-header> All reservations </ion-list-header>
+    <ion-item *ngFor="let reservation of reservations">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <div>{{ reservation.user.firstName }} {{ reservation.user.lastName}}</div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ng-container *ngIf="!reservation.accessEvent">
+                <ion-icon name="close-outline"></ion-icon>
+              </ng-container>
+              <ng-container *ngIf="reservation.accessEvent">
+                <ion-icon name="checkmark-outline"></ion-icon>
+              </ng-container>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>{{ reservation.accessDate }}</div>
+          </ion-col>
+          <ion-col>
+            <div>{{ reservation.ticket.ticketsUsed }} / {{ reservation.ticket.amount }}</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+</ion-content>

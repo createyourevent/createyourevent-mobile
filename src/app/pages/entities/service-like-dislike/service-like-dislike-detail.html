@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Service Like Dislike </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">ID</ion-label>
+      <div item-content>
+        <span>{{serviceLikeDislike.id}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Like</ion-label>
+      <div item-content>
+        <span>{{serviceLikeDislike.like}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Dislike</ion-label>
+      <div item-content>
+        <span>{{serviceLikeDislike.dislike}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Date</ion-label>
+      <div item-content>
+        <span>{{serviceLikeDislike.date | date:'medium'}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Comment</ion-label>
+      <div item-content>
+        <span>{{serviceLikeDislike.comment}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Create Your Event Service</ion-label>
+      <div item-content *ngIf="serviceLikeDislike.createYourEventService">
+        <a>{{serviceLikeDislike.createYourEventService?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>User</ion-label>
+      <div item-content>{{serviceLikeDislike.user?.id}}</div>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="open(serviceLikeDislike)">{{ 'EDIT_BUTTON' | translate }}</ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteModal(serviceLikeDislike)">{{ 'DELETE_BUTTON' | translate }}</ion-button>
+</ion-content>

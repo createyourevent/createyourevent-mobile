@@ -1,0 +1,163 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Product </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">ID</ion-label>
+      <div item-content>
+        <span>{{product.id}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Title</ion-label>
+      <div item-content>
+        <span>{{product.title}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Keywords</ion-label>
+      <div item-content>
+        <span>{{product.keywords}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Description</ion-label>
+      <div item-content>
+        <span>{{product.description}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Date Added</ion-label>
+      <div item-content>
+        <span>{{product.dateAdded | date:'medium'}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Date Modified</ion-label>
+      <div item-content>
+        <span>{{product.dateModified | date:'medium'}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Price Type</ion-label>
+      <div item-content>
+        <span>{{product.priceType}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Rent Type</ion-label>
+      <div item-content>
+        <span>{{product.rentType}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Price</ion-label>
+      <div item-content>
+        <span>{{product.price}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Photo</ion-label>
+      <div item-content>
+        <div *ngIf="product.photo">
+          <a (click)="openFile(product.photoContentType, product.photo)">
+            <img [src]="'data:' + product.photoContentType + ';base64,' + product.photo" style="max-width: 100%" alt="product image" />
+          </a>
+          {{product.photoContentType}}, {{byteSize(product.photo)}}
+        </div>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Photo 2</ion-label>
+      <div item-content>
+        <div *ngIf="product.photo2">
+          <a (click)="openFile(product.photo2ContentType, product.photo2)">
+            <img [src]="'data:' + product.photo2ContentType + ';base64,' + product.photo2" style="max-width: 100%" alt="product image" />
+          </a>
+          {{product.photo2ContentType}}, {{byteSize(product.photo2)}}
+        </div>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Photo 3</ion-label>
+      <div item-content>
+        <div *ngIf="product.photo3">
+          <a (click)="openFile(product.photo3ContentType, product.photo3)">
+            <img [src]="'data:' + product.photo3ContentType + ';base64,' + product.photo3" style="max-width: 100%" alt="product image" />
+          </a>
+          {{product.photo3ContentType}}, {{byteSize(product.photo3)}}
+        </div>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Youtube</ion-label>
+      <div item-content>
+        <span>{{product.youtube}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Active</ion-label>
+      <div item-content>
+        <span>{{product.active}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Stock</ion-label>
+      <div item-content>
+        <span>{{product.stock}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Product Type</ion-label>
+      <div item-content>
+        <span>{{product.productType}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Item Number</ion-label>
+      <div item-content>
+        <span>{{product.itemNumber}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Status</ion-label>
+      <div item-content>
+        <span>{{product.status}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Unit</ion-label>
+      <div item-content>
+        <span>{{product.unit}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Amount</ion-label>
+      <div item-content>
+        <span>{{product.amount}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Motto</ion-label>
+      <div item-content>
+        <span>{{product.motto}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Shop</ion-label>
+      <div item-content *ngIf="product.shop">
+        <a>{{product.shop?.id}}</a>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="open(product)">{{ 'EDIT_BUTTON' | translate }}</ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteModal(product)">{{ 'DELETE_BUTTON' | translate }}</ion-button>
+</ion-content>

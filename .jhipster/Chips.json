@@ -1,0 +1,48 @@
+{
+  "name": "Chips",
+  "fields": [
+    {
+      "fieldName": "points",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "website",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "x",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "y",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "image",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "color",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "chipsCollectionChips",
+      "otherEntityRelationshipName": "chips",
+      "relationshipName": "chipsCollectionChips"
+    }
+  ],
+  "entityTableName": "chips",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220215082410"
+}

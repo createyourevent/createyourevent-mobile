@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Bonds </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- todo: add elasticsearch support -->
+<ion-content class="ion-padding">
+  <ion-refresher [disabled]="plt.is('desktop')" slot="fixed" (ionRefresh)="loadAll($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let bond of bonds; trackBy: trackId" #slidingItem>
+      <ion-item (click)="view(bond)">
+        <ion-label text-wrap>
+          <p>{{bond.id}}</p>
+          <ion-text color="primary"><h2>{{bond.name}}</h2></ion-text>
+          <p>{{bond.description}}</p>
+          <p>{{bond.code}}</p>
+          <p>{{bond.points}}</p>
+          <p>{{bond.creationDate | date:'medium'}}</p>
+          <p>{{bond.redemptionDate | date:'medium'}}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="primary" (click)="edit(slidingItem, bond)"> {{ 'EDIT_BUTTON' | translate }} </ion-item-option>
+        <ion-item-option color="danger" (click)="delete(bond)"> {{ 'DELETE_BUTTON' | translate }} </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-item *ngIf="!bonds?.length">
+    <ion-label> No Bonds found. </ion-label>
+  </ion-item>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="new()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

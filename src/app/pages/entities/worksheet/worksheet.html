@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Worksheets </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- todo: add elasticsearch support -->
+<ion-content class="ion-padding">
+  <ion-refresher [disabled]="plt.is('desktop')" slot="fixed" (ionRefresh)="loadAll($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let worksheet of worksheets; trackBy: trackId" #slidingItem>
+      <ion-item (click)="view(worksheet)">
+        <ion-label text-wrap>
+          <p>{{worksheet.id}}</p>
+          <p>{{worksheet.description}}</p>
+          <p>{{worksheet.start | date:'medium'}}</p>
+          <p>{{worksheet.end | date:'medium'}}</p>
+          <p>{{worksheet.costHour}}</p>
+          <p>{{worksheet.total}}</p>
+          <!-- todo: special handling for translating enum - {{'WorksheetType.' + worksheet.billingType}}" -->
+          <p>{{worksheet.billingType}}</p>
+          <!-- todo: special handling for translating enum - {{'UserType.' + worksheet.userType}}" -->
+          <p>{{worksheet.userType}}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="primary" (click)="edit(slidingItem, worksheet)"> {{ 'EDIT_BUTTON' | translate }} </ion-item-option>
+        <ion-item-option color="danger" (click)="delete(worksheet)"> {{ 'DELETE_BUTTON' | translate }} </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-item *ngIf="!worksheets?.length">
+    <ion-label> No Worksheets found. </ion-label>
+  </ion-item>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="new()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

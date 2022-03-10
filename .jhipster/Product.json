@@ -1,0 +1,161 @@
+{
+  "name": "Product",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "keywords",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateAdded",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "dateModified",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "priceType",
+      "fieldType": "PriceType",
+      "fieldValues": "SELL,RENT"
+    },
+    {
+      "fieldName": "rentType",
+      "fieldType": "RentType",
+      "fieldValues": "HOURLY,HALFDAY,DAY"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "photo",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "photo2",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "photo3",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "youtube",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "active",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "stock",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "productType",
+      "fieldType": "ProductType",
+      "fieldValues": "REAL_ESTATE,FOOD,DRINK,MUSIC,LIGHTSHOW,DECORATION,MISCELLANEOUS"
+    },
+    {
+      "fieldName": "itemNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "OrderStatus",
+      "fieldValues": "NEW,PROCESSING,COMPLETED"
+    },
+    {
+      "fieldName": "unit",
+      "fieldType": "Unit",
+      "fieldValues": "ITEM,GRAM,KILOGRAM,TONNE,MILLIMETER,CENTIMETER,METER,MILILITER,CENTILITER,DECILITER,LITER",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "motto",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "eventProductOrder",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "eventProductOrders"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "eventProductRatingComment",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "comments"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "worksheet",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "worksheets"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "image",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "images"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "mp3",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "mp3s"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "shop",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "shop"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "tags",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "tags"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "deliveryType",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "deliveryTypes"
+    }
+  ],
+  "entityTableName": "product",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220215082343"
+}

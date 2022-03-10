@@ -1,0 +1,68 @@
+{
+  "name": "FeeTransaction",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "feeTransactionId",
+      "otherEntityRelationshipName": "feeTransaction",
+      "relationshipName": "transactionId",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "eventProductOrder",
+      "otherEntityRelationshipName": "feeTransaction",
+      "relationshipName": "eventProductOrder",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "eventServiceMapOrder",
+      "otherEntityRelationshipName": "feeTransaction",
+      "relationshipName": "eventServiceMapOrder",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "event",
+      "otherEntityRelationshipName": "feeTransaction",
+      "relationshipName": "event",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "organizationReservation",
+      "otherEntityRelationshipName": "feeTransaction",
+      "relationshipName": "organizationReservation",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "feeTransactionEntry",
+      "otherEntityRelationshipName": "feeTransaction",
+      "relationshipName": "entries"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "feeTransaction",
+      "relationshipName": "user"
+    }
+  ],
+  "entityTableName": "fee_transaction",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220215082404"
+}

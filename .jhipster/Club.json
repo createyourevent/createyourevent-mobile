@@ -1,0 +1,35 @@
+{
+  "name": "Club",
+  "fields": [
+    {
+      "fieldName": "priceCard",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "club",
+      "relationshipName": "organization",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "club",
+      "relationshipName": "user"
+    }
+  ],
+  "entityTableName": "club",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220215082333"
+}

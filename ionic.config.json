@@ -1,0 +1,10 @@
+{
+  "name": "createyourevent_mobi",
+  "integrations": {
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
+  },
+  "type": "angular"
+}

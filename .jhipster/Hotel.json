@@ -1,0 +1,39 @@
+{
+  "name": "Hotel",
+  "fields": [
+    {
+      "fieldName": "menu",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "placesToSleep",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "hotel",
+      "relationshipName": "organization",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "hotel",
+      "relationshipName": "user"
+    }
+  ],
+  "entityTableName": "hotel",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220215082334"
+}

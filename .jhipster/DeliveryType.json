@@ -1,0 +1,46 @@
+{
+  "name": "DeliveryType",
+  "fields": [
+    {
+      "fieldName": "deliveryType",
+      "fieldType": "DeliveryTypes",
+      "fieldValues": "PICKUP,DELIVERY,SHIPPING"
+    },
+    {
+      "fieldName": "minimumOrderQuantity",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "pricePerKilometre",
+      "fieldType": "Float"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "eventProductOrder",
+      "otherEntityRelationshipName": "deliveryType",
+      "relationshipName": "eventProductOrders"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "deliveryTypes",
+      "relationshipName": "product"
+    }
+  ],
+  "entityTableName": "delivery_type",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220215082344"
+}

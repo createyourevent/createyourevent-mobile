@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Tags </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button [disabled]="!isReadyToSave" (click)="save()" color="primary">
+        <span *ngIf="platform.is('ios')">{{'DONE_BUTTON' | translate}}</span>
+        <ion-icon name="checkmark" *ngIf="!platform.is('ios')"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form *ngIf="form" name="form" [formGroup]="form" (ngSubmit)="save()">
+    <ion-list>
+      <ion-item [hidden]="!form.id">
+        <ion-label>ID</ion-label>
+        <ion-input type="hidden" id="id" formControlName="id" readonly></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Tag</ion-label>
+        <ion-input type="text" name="tag" formControlName="tag"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Event</ion-label>
+        <ion-select id="field_event" formControlName="event" [compareWith]="compareEvent">
+          <ion-select-option [value]="null"></ion-select-option>
+          <ion-select-option [value]="eventOption" *ngFor="let eventOption of events; trackBy: trackEventById"
+            >{{eventOption.id}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Product</ion-label>
+        <ion-select id="field_product" formControlName="product" [compareWith]="compareProduct">
+          <ion-select-option [value]="null"></ion-select-option>
+          <ion-select-option [value]="productOption" *ngFor="let productOption of products; trackBy: trackProductById"
+            >{{productOption.id}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Shop</ion-label>
+        <ion-select id="field_shop" formControlName="shop" [compareWith]="compareShop">
+          <ion-select-option [value]="null"></ion-select-option>
+          <ion-select-option [value]="shopOption" *ngFor="let shopOption of shops; trackBy: trackShopById"
+            >{{shopOption.id}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Service</ion-label>
+        <ion-select id="field_service" formControlName="service" [compareWith]="compareCreateYourEventService">
+          <ion-select-option [value]="null"></ion-select-option>
+          <ion-select-option
+            [value]="createYourEventServiceOption"
+            *ngFor="let createYourEventServiceOption of createYourEventServices; trackBy: trackCreateYourEventServiceById"
+            >{{createYourEventServiceOption.id}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Organization</ion-label>
+        <ion-select id="field_organization" formControlName="organization" [compareWith]="compareOrganization">
+          <ion-select-option [value]="null"></ion-select-option>
+          <ion-select-option [value]="organizationOption" *ngFor="let organizationOption of organizations; trackBy: trackOrganizationById"
+            >{{organizationOption.id}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

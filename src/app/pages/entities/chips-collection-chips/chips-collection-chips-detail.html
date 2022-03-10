@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Chips Collection Chips </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">ID</ion-label>
+      <div item-content>
+        <span>{{chipsCollectionChips.id}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Chips Collection</ion-label>
+      <div item-content *ngIf="chipsCollectionChips.chipsCollection">
+        <a>{{chipsCollectionChips.chipsCollection?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Chips</ion-label>
+      <div item-content *ngIf="chipsCollectionChips.chips">
+        <a>{{chipsCollectionChips.chips?.id}}</a>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="open(chipsCollectionChips)">{{ 'EDIT_BUTTON' | translate }}</ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteModal(chipsCollectionChips)">{{ 'DELETE_BUTTON' | translate }}</ion-button>
+</ion-content>

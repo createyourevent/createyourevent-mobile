@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Fee Transaction </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">ID</ion-label>
+      <div item-content>
+        <span>{{feeTransaction.id}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Date</ion-label>
+      <div item-content>
+        <span>{{feeTransaction.date | date:'medium'}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Transaction Id</ion-label>
+      <div item-content *ngIf="feeTransaction.transactionId">
+        <a>{{feeTransaction.transactionId?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Event Product Order</ion-label>
+      <div item-content *ngIf="feeTransaction.eventProductOrder">
+        <a>{{feeTransaction.eventProductOrder?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Event Service Map Order</ion-label>
+      <div item-content *ngIf="feeTransaction.eventServiceMapOrder">
+        <a>{{feeTransaction.eventServiceMapOrder?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Event</ion-label>
+      <div item-content *ngIf="feeTransaction.event">
+        <a>{{feeTransaction.event?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Organization Reservation</ion-label>
+      <div item-content *ngIf="feeTransaction.organizationReservation">
+        <a>{{feeTransaction.organizationReservation?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>User</ion-label>
+      <div item-content>{{feeTransaction.user?.id}}</div>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="open(feeTransaction)">{{ 'EDIT_BUTTON' | translate }}</ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteModal(feeTransaction)">{{ 'DELETE_BUTTON' | translate }}</ion-button>
+</ion-content>

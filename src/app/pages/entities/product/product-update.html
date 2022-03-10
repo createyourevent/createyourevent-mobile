@@ -1,0 +1,196 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Product </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button [disabled]="!isReadyToSave" (click)="save()" color="primary">
+        <span *ngIf="platform.is('ios')">{{'DONE_BUTTON' | translate}}</span>
+        <ion-icon name="checkmark" *ngIf="!platform.is('ios')"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form *ngIf="form" name="form" [formGroup]="form" (ngSubmit)="save()">
+    <ion-list>
+      <ion-item [hidden]="!form.id">
+        <ion-label>ID</ion-label>
+        <ion-input type="hidden" id="id" formControlName="id" readonly></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Title</ion-label>
+        <ion-input type="text" name="title" formControlName="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Keywords</ion-label>
+        <ion-input type="text" name="keywords" formControlName="keywords"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-textarea placeholder="Description" formControlName="description" id="field_description"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label>Date Added</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY HH:mm" formControlName="dateAdded" id="field_dateAdded"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Date Modified</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY HH:mm" formControlName="dateModified" id="field_dateModified"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Price Type</ion-label>
+        <ion-select formControlName="priceType" id="field_priceType">
+          <ion-select-option value="SELL">{{'PriceType.SELL' | translate}}</ion-select-option>
+          <ion-select-option value="RENT">{{'PriceType.RENT' | translate}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Rent Type</ion-label>
+        <ion-select formControlName="rentType" id="field_rentType">
+          <ion-select-option value="HOURLY">{{'RentType.HOURLY' | translate}}</ion-select-option>
+          <ion-select-option value="HALFDAY">{{'RentType.HALFDAY' | translate}}</ion-select-option>
+          <ion-select-option value="DAY">{{'RentType.DAY' | translate}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Price</ion-label>
+        <ion-input type="number" name="price" formControlName="price"></ion-input>
+      </ion-item>
+      <ion-item>
+        <div>
+          <img
+            [src]="'data:' + product.photoContentType + ';base64,' + product.photo"
+            style="max-height: 100px"
+            *ngIf="product?.photo"
+            alt="product image"
+          />
+          <div *ngIf="product.photo">
+            <p>{{product.photoContentType}}, {{byteSize(product.photo)}}</p>
+            <ion-button color="danger" (click)="clearInputImage('photo', 'photoContentType', 'fileImage')">
+              <ion-icon name="trash" slot="icon-only"></ion-icon>
+            </ion-button>
+          </div>
+          <input type="file" #fileInput style="display: none" (change)="setFileData($event, 'photo', true)" accept="image/*" />
+          <ion-button *ngIf="!product?.photo" (click)="getPicture('photo')">
+            <ion-icon name="add-circle" slot="start"></ion-icon>
+            {{ 'ITEM_CREATE_CHOOSE_IMAGE' | translate }}
+          </ion-button>
+        </div>
+      </ion-item>
+      <ion-item>
+        <div>
+          <img
+            [src]="'data:' + product.photo2ContentType + ';base64,' + product.photo2"
+            style="max-height: 100px"
+            *ngIf="product?.photo2"
+            alt="product image"
+          />
+          <div *ngIf="product.photo2">
+            <p>{{product.photo2ContentType}}, {{byteSize(product.photo2)}}</p>
+            <ion-button color="danger" (click)="clearInputImage('photo2', 'photo2ContentType', 'fileImage')">
+              <ion-icon name="trash" slot="icon-only"></ion-icon>
+            </ion-button>
+          </div>
+          <input type="file" #fileInput style="display: none" (change)="setFileData($event, 'photo2', true)" accept="image/*" />
+          <ion-button *ngIf="!product?.photo2" (click)="getPicture('photo2')">
+            <ion-icon name="add-circle" slot="start"></ion-icon>
+            {{ 'ITEM_CREATE_CHOOSE_IMAGE' | translate }}
+          </ion-button>
+        </div>
+      </ion-item>
+      <ion-item>
+        <div>
+          <img
+            [src]="'data:' + product.photo3ContentType + ';base64,' + product.photo3"
+            style="max-height: 100px"
+            *ngIf="product?.photo3"
+            alt="product image"
+          />
+          <div *ngIf="product.photo3">
+            <p>{{product.photo3ContentType}}, {{byteSize(product.photo3)}}</p>
+            <ion-button color="danger" (click)="clearInputImage('photo3', 'photo3ContentType', 'fileImage')">
+              <ion-icon name="trash" slot="icon-only"></ion-icon>
+            </ion-button>
+          </div>
+          <input type="file" #fileInput style="display: none" (change)="setFileData($event, 'photo3', true)" accept="image/*" />
+          <ion-button *ngIf="!product?.photo3" (click)="getPicture('photo3')">
+            <ion-icon name="add-circle" slot="start"></ion-icon>
+            {{ 'ITEM_CREATE_CHOOSE_IMAGE' | translate }}
+          </ion-button>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Youtube</ion-label>
+        <ion-input type="text" name="youtube" formControlName="youtube"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Active</ion-label>
+        <ion-checkbox formControlName="active"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Stock</ion-label>
+        <ion-input type="number" name="stock" formControlName="stock"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Product Type</ion-label>
+        <ion-select formControlName="productType" id="field_productType">
+          <ion-select-option value="REAL_ESTATE">{{'ProductType.REAL_ESTATE' | translate}}</ion-select-option>
+          <ion-select-option value="FOOD">{{'ProductType.FOOD' | translate}}</ion-select-option>
+          <ion-select-option value="DRINK">{{'ProductType.DRINK' | translate}}</ion-select-option>
+          <ion-select-option value="MUSIC">{{'ProductType.MUSIC' | translate}}</ion-select-option>
+          <ion-select-option value="LIGHTSHOW">{{'ProductType.LIGHTSHOW' | translate}}</ion-select-option>
+          <ion-select-option value="DECORATION">{{'ProductType.DECORATION' | translate}}</ion-select-option>
+          <ion-select-option value="MISCELLANEOUS">{{'ProductType.MISCELLANEOUS' | translate}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Item Number</ion-label>
+        <ion-input type="text" name="itemNumber" formControlName="itemNumber"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Status</ion-label>
+        <ion-select formControlName="status" id="field_status">
+          <ion-select-option value="NEW">{{'OrderStatus.NEW' | translate}}</ion-select-option>
+          <ion-select-option value="PROCESSING">{{'OrderStatus.PROCESSING' | translate}}</ion-select-option>
+          <ion-select-option value="COMPLETED">{{'OrderStatus.COMPLETED' | translate}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Unit</ion-label>
+        <ion-select formControlName="unit" id="field_unit" required>
+          <ion-select-option value="ITEM">{{'Unit.ITEM' | translate}}</ion-select-option>
+          <ion-select-option value="GRAM">{{'Unit.GRAM' | translate}}</ion-select-option>
+          <ion-select-option value="KILOGRAM">{{'Unit.KILOGRAM' | translate}}</ion-select-option>
+          <ion-select-option value="TONNE">{{'Unit.TONNE' | translate}}</ion-select-option>
+          <ion-select-option value="MILLIMETER">{{'Unit.MILLIMETER' | translate}}</ion-select-option>
+          <ion-select-option value="CENTIMETER">{{'Unit.CENTIMETER' | translate}}</ion-select-option>
+          <ion-select-option value="METER">{{'Unit.METER' | translate}}</ion-select-option>
+          <ion-select-option value="MILILITER">{{'Unit.MILILITER' | translate}}</ion-select-option>
+          <ion-select-option value="CENTILITER">{{'Unit.CENTILITER' | translate}}</ion-select-option>
+          <ion-select-option value="DECILITER">{{'Unit.DECILITER' | translate}}</ion-select-option>
+          <ion-select-option value="LITER">{{'Unit.LITER' | translate}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Amount</ion-label>
+        <ion-input type="number" name="amount" formControlName="amount"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Motto</ion-label>
+        <ion-input type="text" name="motto" formControlName="motto"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Shop</ion-label>
+        <ion-select id="field_shop" formControlName="shop" [compareWith]="compareShop">
+          <ion-select-option [value]="null"></ion-select-option>
+          <ion-select-option [value]="shopOption" *ngFor="let shopOption of shops; trackBy: trackShopById"
+            >{{shopOption.id}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

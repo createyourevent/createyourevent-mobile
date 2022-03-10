@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Point </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button [disabled]="!isReadyToSave" (click)="save()" color="primary">
+        <span *ngIf="platform.is('ios')">{{'DONE_BUTTON' | translate}}</span>
+        <ion-icon name="checkmark" *ngIf="!platform.is('ios')"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form *ngIf="form" name="form" [formGroup]="form" (ngSubmit)="save()">
+    <ion-list>
+      <ion-item [hidden]="!form.id">
+        <ion-label>ID</ion-label>
+        <ion-input type="hidden" id="id" formControlName="id" readonly></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Key</ion-label>
+        <ion-input type="text" name="key" formControlName="key"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input type="text" name="name" formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Key Name</ion-label>
+        <ion-input type="text" name="keyName" formControlName="keyName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-textarea placeholder="Description" formControlName="description" id="field_description"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Key Description</ion-label>
+        <ion-input type="text" name="keyDescription" formControlName="keyDescription"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Category</ion-label>
+        <ion-select formControlName="category" id="field_category">
+          <ion-select-option value="EVENT">{{'PointsCategory.EVENT' | translate}}</ion-select-option>
+          <ion-select-option value="SHOP">{{'PointsCategory.SHOP' | translate}}</ion-select-option>
+          <ion-select-option value="SERVICE">{{'PointsCategory.SERVICE' | translate}}</ion-select-option>
+          <ion-select-option value="COMMENT">{{'PointsCategory.COMMENT' | translate}}</ion-select-option>
+          <ion-select-option value="RATING">{{'PointsCategory.RATING' | translate}}</ion-select-option>
+          <ion-select-option value="REGISTER">{{'PointsCategory.REGISTER' | translate}}</ion-select-option>
+          <ion-select-option value="MISCELLANEOUS">{{'PointsCategory.MISCELLANEOUS' | translate}}</ion-select-option>
+          <ion-select-option value="PRODUCT">{{'PointsCategory.PRODUCT' | translate}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Points</ion-label>
+        <ion-input type="number" name="points" formControlName="points"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Count Per Day</ion-label>
+        <ion-input type="number" name="countPerDay" formControlName="countPerDay"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Creation Date</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY HH:mm" formControlName="creationDate" id="field_creationDate"></ion-datetime>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

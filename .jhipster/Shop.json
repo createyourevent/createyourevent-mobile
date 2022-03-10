@@ -1,0 +1,108 @@
+{
+  "name": "Shop",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "productType",
+      "fieldType": "ProductType",
+      "fieldValues": "REAL_ESTATE,FOOD,DRINK,MUSIC,LIGHTSHOW,DECORATION,MISCELLANEOUS",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "logo",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "active",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "activeOwner",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "address",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "motto",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "phone",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "webAddress",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "shop",
+      "relationshipName": "product"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "eventProductOrder",
+      "otherEntityRelationshipName": "shop",
+      "relationshipName": "eventProductOrders"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "image",
+      "otherEntityRelationshipName": "shop",
+      "relationshipName": "images"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "mp3",
+      "otherEntityRelationshipName": "shop",
+      "relationshipName": "mp3s"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "shop",
+      "relationshipName": "user"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "shopComment",
+      "otherEntityRelationshipName": "shop",
+      "relationshipName": "comments"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "tags",
+      "otherEntityRelationshipName": "shop",
+      "relationshipName": "tags"
+    }
+  ],
+  "entityTableName": "shop",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220215082331"
+}

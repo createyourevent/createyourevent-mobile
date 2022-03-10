@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Reservation </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">ID</ion-label>
+      <div item-content>
+        <span>{{reservation.id}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Date</ion-label>
+      <div item-content>
+        <span>{{reservation.date | date:'medium'}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Billed</ion-label>
+      <div item-content>
+        <span>{{reservation.billed}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Access Event</ion-label>
+      <div item-content>
+        <span>{{reservation.accessEvent}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Access Date</ion-label>
+      <div item-content>
+        <span>{{reservation.accessDate | date:'medium'}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Td Tx Id</ion-label>
+      <div item-content>
+        <span>{{reservation.tdTxId}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Transaction Id</ion-label>
+      <div item-content *ngIf="reservation.transactionId">
+        <a>{{reservation.transactionId?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Ticket</ion-label>
+      <div item-content *ngIf="reservation.ticket">
+        <a>{{reservation.ticket?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>User</ion-label>
+      <div item-content>{{reservation.user?.id}}</div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Event</ion-label>
+      <div item-content *ngIf="reservation.event">
+        <a>{{reservation.event?.id}}</a>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="open(reservation)">{{ 'EDIT_BUTTON' | translate }}</ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteModal(reservation)">{{ 'DELETE_BUTTON' | translate }}</ion-button>
+</ion-content>

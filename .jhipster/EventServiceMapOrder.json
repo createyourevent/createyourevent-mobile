@@ -1,0 +1,86 @@
+{
+  "name": "EventServiceMapOrder",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "dateFrom",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "dateUntil",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "costHour",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "rideCosts",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "total",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "totalHours",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "kilometre",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "billed",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "seen",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "approved",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "feeTransaction",
+      "otherEntityRelationshipName": "eventServiceMapOrder",
+      "relationshipName": "feeTransaction",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "event",
+      "otherEntityRelationshipName": "eventServiceMapOrders",
+      "relationshipName": "event"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "serviceMap",
+      "otherEntityRelationshipName": "eventServiceMapOrders",
+      "relationshipName": "serviceMap"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cart",
+      "otherEntityRelationshipName": "services",
+      "relationshipName": "cart"
+    }
+  ],
+  "entityTableName": "event_service_map_order",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220215082401"
+}

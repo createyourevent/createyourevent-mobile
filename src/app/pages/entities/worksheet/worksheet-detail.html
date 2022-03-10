@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Worksheet </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">ID</ion-label>
+      <div item-content>
+        <span>{{worksheet.id}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Description</ion-label>
+      <div item-content>
+        <span>{{worksheet.description}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Start</ion-label>
+      <div item-content>
+        <span>{{worksheet.start | date:'medium'}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">End</ion-label>
+      <div item-content>
+        <span>{{worksheet.end | date:'medium'}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Cost Hour</ion-label>
+      <div item-content>
+        <span>{{worksheet.costHour}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Total</ion-label>
+      <div item-content>
+        <span>{{worksheet.total}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Billing Type</ion-label>
+      <div item-content>
+        <span>{{worksheet.billingType}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">User Type</ion-label>
+      <div item-content>
+        <span>{{worksheet.userType}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>User</ion-label>
+      <div item-content>{{worksheet.user?.id}}</div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Event</ion-label>
+      <div item-content *ngIf="worksheet.event">
+        <a>{{worksheet.event?.id}}</a>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Product</ion-label>
+      <div item-content *ngIf="worksheet.product">
+        <a>{{worksheet.product?.id}}</a>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="open(worksheet)">{{ 'EDIT_BUTTON' | translate }}</ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteModal(worksheet)">{{ 'DELETE_BUTTON' | translate }}</ion-button>
+</ion-content>

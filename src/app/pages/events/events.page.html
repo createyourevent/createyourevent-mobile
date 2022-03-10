@@ -1,0 +1,126 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title></ion-title>
+
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides>
+    <ion-slide *ngFor="let event of events">
+      <div gradient class="slide">
+        <img [src]="'data:' + event.flyerContentType + ';base64,' + event.flyer" style="max-width: 250px" alt="event image" />
+        <h1 class="title"><span>{{ event.name }}</span></h1>
+        <h2 class="motto">{{ event.motto }}</h2>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h5><span class="abril">{{ 'DESCRIPTION' | translate }}</span></h5>
+            </mat-panel-title>
+            <mat-panel-description>
+              <span>{{ 'DESCRIPTION_INFO' | translate }}</span>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <dl class="row-md jh-entity-details">
+            <dt><span jhiTranslate="event-detail.category">Category</span></dt>
+            <dd>
+              <span>{{ event.category }}</span>
+            </dd>
+            <dt><span jhiTranslate="event-detail.price">Price</span></dt>
+            <dd>
+              <span>{{ event.price | currency }}</span>
+            </dd>
+            <hr />
+            <dd>
+              <div class="ql-snow">
+                <div class="ql-editor">
+                  <div [innerHTML]="event.description | safeHtml"></div>
+                </div>
+              </div>
+            </dd>
+          </dl>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h5><ion-icon name="alarm"></ion-icon>&nbsp;<span>{{ 'DATE' | translate }}</span></h5>
+            </mat-panel-title>
+            <mat-panel-description>
+              <span>{{ 'DATE_INFO' | translate }}</span>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <div class="row">
+            <div class="col-md-6">
+              <dl class="row-md jh-entity-details">
+                <dt><span>{{ 'START_DATE' | translate}}</span></dt>
+                <dd>
+                  <span>{{ event.dateStart | date:'mediumDate' }}</span>
+                </dd>
+                <dt><span>{{ 'START_TIME' | translate}}</span></dt>
+                <dd>
+                  <span>{{ event.dateStart | date:'shortTime' }}</span>
+                </dd>
+              </dl>
+            </div>
+            <div class="col-md-6">
+              <dl class="row-md jh-entity-details">
+                <dt><span>{{ 'END_DATE' | translate}}</span></dt>
+                <dd>
+                  <span>{{ event.dateEnd | date:'mediumDate' }}</span>
+                </dd>
+                <dt><span>{{ 'FOR_EVENT' | translate}}</span></dt>
+                <dd>
+                  <span>{{ event.dateEnd | date:'shortTime' }}</span>
+                </dd>
+              </dl>
+            </div>
+          </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h5><ion-icon name="business"></ion-icon>&nbsp;<span>{{ 'LOCATION' | translate }}</span></h5>
+            </mat-panel-title>
+            <mat-panel-description>
+              <span>{{ 'LOCATION_INFO' | translate }}</span>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <div class="row">
+            <div class="col-md-8">
+              <div class="row">
+                <div class="col-md-12">
+                  <h3>{{ event.location.name }}</h3>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">{{ event.location.address.address }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="ql-snow">
+                <div class="ql-editor">
+                  <div [innerHTML]="event.location.description | safeHtml"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-expansion-panel>
+
+        <ngb-rating [rate]="getAverage(event.id)" [readonly]="true" [max]="5"></ngb-rating>
+        <br />
+        <span>Total ratings:</span> {{ getRatingsTotal(event.id) }}
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Chips </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">ID</ion-label>
+      <div item-content>
+        <span>{{chips.id}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Points</ion-label>
+      <div item-content>
+        <span>{{chips.points}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Website</ion-label>
+      <div item-content>
+        <span>{{chips.website}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">X</ion-label>
+      <div item-content>
+        <span>{{chips.x}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Y</ion-label>
+      <div item-content>
+        <span>{{chips.y}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Image</ion-label>
+      <div item-content>
+        <div *ngIf="chips.image">
+          <a (click)="openFile(chips.imageContentType, chips.image)">
+            <img [src]="'data:' + chips.imageContentType + ';base64,' + chips.image" style="max-width: 100%" alt="chips image" />
+          </a>
+          {{chips.imageContentType}}, {{byteSize(chips.image)}}
+        </div>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Color</ion-label>
+      <div item-content>
+        <span>{{chips.color}}</span>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="open(chips)">{{ 'EDIT_BUTTON' | translate }}</ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteModal(chips)">{{ 'DELETE_BUTTON' | translate }}</ion-button>
+</ion-content>

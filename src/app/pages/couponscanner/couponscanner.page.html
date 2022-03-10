@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ 'TAB7_COUPONSCANNER' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-label>{{ 'FOR_EVENT' | translate}}</ion-label>
+    <ion-select [(ngModel)]="event" (ionChange)="onChange($event)" placeholder="{{ 'SELECT_EVENT' | translate }}">
+      <ion-select-option *ngFor="let event of events" value="{{ event.id }}">{{ event.name }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ng-container *ngIf="event !== null">
+    <ion-label>{{ 'VALUE' | translate}}</ion-label>
+    <ion-input type="number" value="{{ value }}" (ionChange)="onChangeVal($event)"></ion-input>
+    <ion-button (click)="barcodeScanner()" [disabled]="isDisable">{{ 'SCAN_COUPON' | translate }}</ion-button>
+  </ng-container>
+</ion-content>

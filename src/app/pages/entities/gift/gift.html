@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Gifts </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- todo: add elasticsearch support -->
+<ion-content class="ion-padding">
+  <ion-refresher [disabled]="plt.is('desktop')" slot="fixed" (ionRefresh)="loadAll($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let gift of gifts; trackBy: trackId" #slidingItem>
+      <ion-item (click)="view(gift)">
+        <ion-label text-wrap>
+          <p>{{gift.id}}</p>
+          <ion-text color="primary"><h2>{{gift.title}}</h2></ion-text>
+          <p>{{gift.description}}</p>
+          <ion-avatar *ngIf="gift.photo">
+            <img [src]="'data:' + gift.photoContentType + ';base64,' + gift.photo" />
+          </ion-avatar>
+          <p>{{gift.points}}</p>
+          <p>{{gift.active}}</p>
+          <p>{{gift.stock}}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="primary" (click)="edit(slidingItem, gift)"> {{ 'EDIT_BUTTON' | translate }} </ion-item-option>
+        <ion-item-option color="danger" (click)="delete(gift)"> {{ 'DELETE_BUTTON' | translate }} </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-item *ngIf="!gifts?.length">
+    <ion-label> No Gifts found. </ion-label>
+  </ion-item>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="new()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

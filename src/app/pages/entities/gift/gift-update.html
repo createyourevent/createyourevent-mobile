@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Gift </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button [disabled]="!isReadyToSave" (click)="save()" color="primary">
+        <span *ngIf="platform.is('ios')">{{'DONE_BUTTON' | translate}}</span>
+        <ion-icon name="checkmark" *ngIf="!platform.is('ios')"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form *ngIf="form" name="form" [formGroup]="form" (ngSubmit)="save()">
+    <ion-list>
+      <ion-item [hidden]="!form.id">
+        <ion-label>ID</ion-label>
+        <ion-input type="hidden" id="id" formControlName="id" readonly></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Title</ion-label>
+        <ion-input type="text" name="title" formControlName="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-textarea placeholder="Description" formControlName="description" id="field_description"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <div>
+          <img
+            [src]="'data:' + gift.photoContentType + ';base64,' + gift.photo"
+            style="max-height: 100px"
+            *ngIf="gift?.photo"
+            alt="gift image"
+          />
+          <div *ngIf="gift.photo">
+            <p>{{gift.photoContentType}}, {{byteSize(gift.photo)}}</p>
+            <ion-button color="danger" (click)="clearInputImage('photo', 'photoContentType', 'fileImage')">
+              <ion-icon name="trash" slot="icon-only"></ion-icon>
+            </ion-button>
+          </div>
+          <input type="file" #fileInput style="display: none" (change)="setFileData($event, 'photo', true)" accept="image/*" />
+          <ion-button *ngIf="!gift?.photo" (click)="getPicture('photo')">
+            <ion-icon name="add-circle" slot="start"></ion-icon>
+            {{ 'ITEM_CREATE_CHOOSE_IMAGE' | translate }}
+          </ion-button>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Points</ion-label>
+        <ion-input type="number" name="points" formControlName="points"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Active</ion-label>
+        <ion-checkbox formControlName="active"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Stock</ion-label>
+        <ion-input type="number" name="stock" formControlName="stock"></ion-input>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

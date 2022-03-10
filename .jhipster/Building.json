@@ -1,0 +1,28 @@
+{
+  "name": "Building",
+  "fields": [
+    {
+      "fieldName": "surface",
+      "fieldType": "Float"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "building",
+      "relationshipName": "organization",
+      "ownerSide": true
+    }
+  ],
+  "entityTableName": "building",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220215082328"
+}

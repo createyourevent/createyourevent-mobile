@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Points Exchange </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">ID</ion-label>
+      <div item-content>
+        <span>{{pointsExchange.id}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Points Total</ion-label>
+      <div item-content>
+        <span>{{pointsExchange.pointsTotal}}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Bond Points Total</ion-label>
+      <div item-content>
+        <span>{{pointsExchange.bondPointsTotal}}</span>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="open(pointsExchange)">{{ 'EDIT_BUTTON' | translate }}</ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteModal(pointsExchange)">{{ 'DELETE_BUTTON' | translate }}</ion-button>
+</ion-content>
